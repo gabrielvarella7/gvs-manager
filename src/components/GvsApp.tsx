@@ -2,15 +2,23 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { api } from "@/lib/api-client";
-import type { MateriaNode, Profile, TopicoNode, TreePayload } from "@/lib/types";
+import type { AssuntoNode, MateriaNode, Profile, TreePayload } from "@/lib/types";
 import { Score } from "./Score";
 import { ConfirmButton, promptName } from "./PromptName";
 
-type Tab = "visao" | "estrutura" | "perfis";
-type Detail =
+const ASSUNTOS_PAGE = 10;
+
+/** Rótulos de aba mais legíveis; o nome na base continua o da matéria. */
+function materiaTabLabel(nome: string): string {
+  if (nome === "F Administração") return "Fundamentos da Administração";
+  return nome;
+}
+
+type NavTab =
+  | { kind: "resumo" }
   | { kind: "materia"; materiaId: string }
-  | { kind: "topico"; materiaId: string; topicoId: string }
-  | null;
+  | { kind: "estrutura" }
+  | { kind: "perfis" };
 
 export function GvsApp() {
   const [loading, setLoading] = useState(true);
@@ -19,8 +27,7 @@ export function GvsApp() {
   const [activeId, setActiveId] = useState<string | null>(null);
   const [tree, setTree] = useState<TreePayload | null>(null);
   const [viewer, setViewer] = useState<{ name: string; simulated: boolean } | null>(null);
-  const [tab, setTab] = useState<Tab>("visao");
-  const [detail, setDetail] = useState<Detail>(null);
+  const [nav, setNav] = useState<NavTab>({ kind: "resumo" });
 
   const refresh = useCallback(async () => {
     setError(null);
@@ -68,6 +75,14 @@ export function GvsApp() {
     };
   }, [refresh]);
 
+  // If the active matéria tab disappears (ex.: excluída), volta ao Resumo.
+  useEffect(() => {
+    if (nav.kind !== "materia" || !tree) return;
+    if (!tree.materias.some((m) => m.id === nav.materiaId)) {
+      setNav({ kind: "resumo" });
+    }
+  }, [nav, tree]);
+
   async function run(action: () => Promise<void>) {
     setError(null);
     try {
@@ -87,14 +102,9 @@ export function GvsApp() {
   }
 
   const active = profiles.find((p) => p.id === activeId) ?? null;
-  const materia =
-    detail && tree
-      ? tree.materias.find((m) => m.id === detail.materiaId) ?? null
-      : null;
-  const topico =
-    detail?.kind === "topico" && materia
-      ? materia.topicos.find((t) => t.id === detail.topicoId) ?? null
-      : null;
+  const materias = tree?.materias ?? [];
+  const materiaAtiva =
+    nav.kind === "materia" ? (materias.find((m) => m.id === nav.materiaId) ?? null) : null;
 
   return (
     <div className="shell">
@@ -106,31 +116,35 @@ export function GvsApp() {
         <nav className="tabs" aria-label="Navegação">
           <button
             type="button"
-            className={tab === "visao" && !detail ? "tab on" : "tab"}
-            onClick={() => {
-              setTab("visao");
-              setDetail(null);
-            }}
+            className={nav.kind === "resumo" ? "tab on" : "tab"}
+            onClick={() => setNav({ kind: "resumo" })}
           >
-            Visão Geral
+            Resumo
           </button>
+          {materias.map((m) => (
+            <button
+              key={m.id}
+              type="button"
+              className={
+                nav.kind === "materia" && nav.materiaId === m.id ? "tab on" : "tab"
+              }
+              title={m.nome}
+              onClick={() => setNav({ kind: "materia", materiaId: m.id })}
+            >
+              {materiaTabLabel(m.nome)}
+            </button>
+          ))}
           <button
             type="button"
-            className={tab === "estrutura" ? "tab on" : "tab"}
-            onClick={() => {
-              setTab("estrutura");
-              setDetail(null);
-            }}
+            className={nav.kind === "estrutura" ? "tab on" : "tab"}
+            onClick={() => setNav({ kind: "estrutura" })}
           >
             Estrutura
           </button>
           <button
             type="button"
-            className={tab === "perfis" ? "tab on" : "tab"}
-            onClick={() => {
-              setTab("perfis");
-              setDetail(null);
-            }}
+            className={nav.kind === "perfis" ? "tab on" : "tab"}
+            onClick={() => setNav({ kind: "perfis" })}
           >
             Perfis
           </button>
@@ -144,8 +158,7 @@ export function GvsApp() {
               onChange={(e) =>
                 run(async () => {
                   await api.activateProfile(e.target.value);
-                  setDetail(null);
-                  setTab("visao");
+                  setNav({ kind: "resumo" });
                 })
               }
             >
@@ -170,7 +183,7 @@ export function GvsApp() {
       {error ? <div className="banner-error">{error}</div> : null}
 
       <main className="main">
-        {tab === "perfis" ? (
+        {nav.kind === "perfis" ? (
           <PerfisView profiles={profiles} activeId={activeId} run={run} />
         ) : !active || !tree ? (
           <EmptyProfiles
@@ -186,36 +199,18 @@ export function GvsApp() {
                   cargo: cargo.trim(),
                   seedMaterias: true,
                 });
-                setTab("visao");
+                setNav({ kind: "resumo" });
               })
             }
           />
-        ) : detail && materia ? (
-          <DetailView
-            materia={materia}
-            topico={topico}
-            onBack={() => {
-              if (detail.kind === "topico") {
-                setDetail({ kind: "materia", materiaId: materia.id });
-              } else {
-                setDetail(null);
-                setTab("visao");
-              }
-            }}
-            onOpenTopico={(tid) =>
-              setDetail({ kind: "topico", materiaId: materia.id, topicoId: tid })
-            }
-            run={run}
-          />
-        ) : tab === "estrutura" ? (
+        ) : nav.kind === "estrutura" ? (
           <EstruturaView tree={tree} run={run} />
+        ) : nav.kind === "materia" && materiaAtiva ? (
+          <MateriaTabView materia={materiaAtiva} run={run} />
         ) : (
           <VisaoGeral
             tree={tree}
-            onOpenMateria={(id) => setDetail({ kind: "materia", materiaId: id })}
-            onOpenTopico={(mid, tid) =>
-              setDetail({ kind: "topico", materiaId: mid, topicoId: tid })
-            }
+            onOpenMateria={(id) => setNav({ kind: "materia", materiaId: id })}
             run={run}
           />
         )}
@@ -242,19 +237,17 @@ function EmptyProfiles({ onCreate }: { onCreate: () => void }) {
 function VisaoGeral({
   tree,
   onOpenMateria,
-  onOpenTopico,
   run,
 }: {
   tree: TreePayload;
   onOpenMateria: (id: string) => void;
-  onOpenTopico: (materiaId: string, topicoId: string) => void;
   run: (a: () => Promise<void>) => Promise<void>;
 }) {
   return (
     <section className="visao">
       <div className="page-head">
         <div>
-          <h1>Visão Geral</h1>
+          <h1>Resumo</h1>
           <p className="muted">
             {tree.profile.concurso || "Sem concurso"} · {tree.profile.cargo || "Sem cargo"}
           </p>
@@ -278,7 +271,7 @@ function VisaoGeral({
           <article key={m.id} className="materia-block">
             <header className="materia-head">
               <button type="button" className="linkish" onClick={() => onOpenMateria(m.id)}>
-                {m.nome}
+                {materiaTabLabel(m.nome)}
               </button>
               <div className="media-label">
                 <span>MÉDIA</span>
@@ -309,7 +302,7 @@ function VisaoGeral({
                     <button
                       type="button"
                       className="topic-row"
-                      onClick={() => onOpenTopico(m.id, t.id)}
+                      onClick={() => onOpenMateria(m.id)}
                     >
                       <span>{t.nome}</span>
                       <Score value={t.media} />
@@ -325,144 +318,276 @@ function VisaoGeral({
   );
 }
 
-function DetailView({
+function MateriaTabView({
   materia,
-  topico,
-  onBack,
-  onOpenTopico,
   run,
 }: {
   materia: MateriaNode;
-  topico: TopicoNode | null;
-  onBack: () => void;
-  onOpenTopico: (id: string) => void;
   run: (a: () => Promise<void>) => Promise<void>;
 }) {
-  if (topico) {
-    return (
-      <section className="detail">
-        <button type="button" className="back" onClick={onBack}>
-          ← {materia.nome}
-        </button>
-        <div className="page-head">
-          <div>
-            <h1>{topico.nome}</h1>
-            <p className="muted">
-              MÉDIA DO TÓPICO <Score value={topico.media} />
-            </p>
-          </div>
+  const [expandedId, setExpandedId] = useState<string | null>(null);
+  const [visibleCount, setVisibleCount] = useState(ASSUNTOS_PAGE);
+
+  // Ao trocar de matéria, fecha expansão.
+  useEffect(() => {
+    setExpandedId(null);
+    setVisibleCount(ASSUNTOS_PAGE);
+  }, [materia.id]);
+
+  function expand(topicoId: string) {
+    setExpandedId(topicoId);
+    setVisibleCount(ASSUNTOS_PAGE);
+  }
+
+  function collapse() {
+    setExpandedId(null);
+    setVisibleCount(ASSUNTOS_PAGE);
+  }
+
+  return (
+    <section className="detail materia-tab">
+      <div className="page-head">
+        <div>
+          <h1>{materiaTabLabel(materia.nome)}</h1>
+          <p className="muted">
+            MÉDIA <Score value={materia.media} />
+          </p>
+        </div>
+        <div className="row-actions">
+          <button
+            type="button"
+            className="btn ghost"
+            onClick={() =>
+              run(async () => {
+                const nome = await promptName(`Renomear matéria (${materia.nome})`);
+                if (!nome) return;
+                await api.renameMateria(materia.id, nome);
+              })
+            }
+          >
+            Renomear
+          </button>
+          <ConfirmButton
+            label="Excluir"
+            confirm={`Excluir matéria “${materia.nome}” e todo o conteúdo?`}
+            className="btn danger"
+            onConfirm={() => run(async () => api.deleteMateria(materia.id).then(() => undefined))}
+          />
           <button
             type="button"
             className="btn"
             onClick={() =>
               run(async () => {
-                const nome = await promptName("Nome do assunto");
+                const nome = await promptName("Nome do tópico");
                 if (!nome) return;
-                await api.addAssunto(topico.id, nome);
+                await api.addTopico(materia.id, nome);
               })
             }
           >
-            + Assunto
+            + Tópico
           </button>
         </div>
-        {topico.assuntos.length === 0 ? (
-          <p className="muted">Nenhum assunto ainda. Adicione e registre exercícios.</p>
-        ) : (
-          <div className="assunto-list">
-            {topico.assuntos.map((a) => (
-              <article key={a.id} className="assunto-row">
-                <div className="assunto-main">
-                  <div className="assunto-title">{a.nome}</div>
-                  <div className="u20">
-                    <span>ACUMULADO U20</span>
-                    <Score value={a.u20} size="lg" />
+      </div>
+
+      {materia.topicos.length === 0 ? (
+        <p className="muted">Nenhum tópico ainda. Adicione o primeiro com nome.</p>
+      ) : (
+        <ul className="topico-expand-list">
+          {materia.topicos.map((t) => {
+            const open = expandedId === t.id;
+            const shown = open ? t.assuntos.slice(0, visibleCount) : [];
+            const hasMore = open && visibleCount < t.assuntos.length;
+
+            return (
+              <li key={t.id} className={open ? "topico-card open" : "topico-card"}>
+                <div className="topico-card-head">
+                  <div className="topico-card-title">
+                    <span className="topico-name">{t.nome}</span>
+                    <span className="topico-meta">
+                      MÉDIA DO TÓPICO <Score value={t.media} />
+                      <span className="muted dense inline-count">
+                        {t.assuntos.length} assunto{t.assuntos.length === 1 ? "" : "s"}
+                      </span>
+                    </span>
+                  </div>
+                  <div className="row-actions">
+                    <button
+                      type="button"
+                      className="btn ghost"
+                      onClick={() =>
+                        run(async () => {
+                          const nome = await promptName(`Renomear tópico (${t.nome})`);
+                          if (!nome) return;
+                          await api.renameTopico(t.id, nome);
+                        })
+                      }
+                    >
+                      Renomear
+                    </button>
+                    <ConfirmButton
+                      label="Excluir"
+                      confirm={`Excluir tópico “${t.nome}”?`}
+                      className="btn danger"
+                      onConfirm={() =>
+                        run(async () => api.deleteTopico(t.id).then(() => undefined))
+                      }
+                    />
+                    {open ? (
+                      <button type="button" className="btn" onClick={collapse}>
+                        recolher
+                      </button>
+                    ) : (
+                      <button
+                        type="button"
+                        className="btn primary"
+                        onClick={() => expand(t.id)}
+                      >
+                        expandir
+                      </button>
+                    )}
                   </div>
                 </div>
-                <div className="recentes">
-                  {a.recentes.length === 0 ? (
-                    <span className="muted">Sem histórico</span>
-                  ) : (
-                    a.recentes.map((h) => (
-                      <span key={h.id} className="chip">
-                        <Score value={h.percentual} size="sm" />
-                        <span className="chip-meta">
-                          {h.acertos}/{h.quantidade}
-                        </span>
-                      </span>
-                    ))
-                  )}
-                </div>
-                <form
-                  className="entry-form"
-                  onSubmit={(e) => {
-                    e.preventDefault();
-                    const form = e.currentTarget;
-                    const fd = new FormData(form);
-                    const acertos = Number(fd.get("acertos"));
-                    const quantidade = Number(fd.get("quantidade"));
-                    run(async () => {
-                      await api.addHistorico(a.id, acertos, quantidade);
-                      form.reset();
-                    });
-                  }}
-                >
-                  <label>
-                    Acertos
-                    <input name="acertos" type="number" min={0} required inputMode="numeric" />
-                  </label>
-                  <label>
-                    Questões
-                    <input name="quantidade" type="number" min={1} required inputMode="numeric" />
-                  </label>
-                  <button type="submit" className="btn primary">
-                    Registrar
-                  </button>
-                </form>
-              </article>
-            ))}
-          </div>
-        )}
-      </section>
-    );
-  }
 
-  return (
-    <section className="detail">
-      <button type="button" className="back" onClick={onBack}>
-        ← Visão Geral
-      </button>
-      <div className="page-head">
-        <div>
-          <h1>{materia.nome}</h1>
-          <p className="muted">
-            MÉDIA <Score value={materia.media} />
-          </p>
-        </div>
-        <button
-          type="button"
-          className="btn"
-          onClick={() =>
-            run(async () => {
-              const nome = await promptName("Nome do tópico");
-              if (!nome) return;
-              await api.addTopico(materia.id, nome);
-            })
-          }
-        >
-          + Tópico
-        </button>
-      </div>
-      <ul className="topic-list big">
-        {materia.topicos.map((t) => (
-          <li key={t.id}>
-            <button type="button" className="topic-row" onClick={() => onOpenTopico(t.id)}>
-              <span>{t.nome}</span>
-              <Score value={t.media} />
-            </button>
-          </li>
-        ))}
-      </ul>
+                {open ? (
+                  <div className="topico-expanded">
+                    <div className="topico-expanded-toolbar">
+                      <button
+                        type="button"
+                        className="btn"
+                        onClick={() =>
+                          run(async () => {
+                            const nome = await promptName("Nome do assunto");
+                            if (!nome) return;
+                            await api.addAssunto(t.id, nome);
+                          })
+                        }
+                      >
+                        + Assunto
+                      </button>
+                    </div>
+
+                    {t.assuntos.length === 0 ? (
+                      <p className="muted dense">Nenhum assunto ainda. Adicione e registre exercícios.</p>
+                    ) : (
+                      <>
+                        <div className="assunto-list">
+                          {shown.map((a) => (
+                            <AssuntoCard key={a.id} assunto={a} run={run} />
+                          ))}
+                        </div>
+                        <div className="topico-expand-actions">
+                          {hasMore ? (
+                            <button
+                              type="button"
+                              className="btn"
+                              onClick={() =>
+                                setVisibleCount((n) =>
+                                  Math.min(n + ASSUNTOS_PAGE, t.assuntos.length),
+                                )
+                              }
+                            >
+                              mais topicos
+                            </button>
+                          ) : null}
+                          <button type="button" className="btn" onClick={collapse}>
+                            recolher
+                          </button>
+                        </div>
+                      </>
+                    )}
+                  </div>
+                ) : null}
+              </li>
+            );
+          })}
+        </ul>
+      )}
     </section>
+  );
+}
+
+function AssuntoCard({
+  assunto,
+  run,
+}: {
+  assunto: AssuntoNode;
+  run: (a: () => Promise<void>) => Promise<void>;
+}) {
+  return (
+    <article className="assunto-row">
+      <div className="assunto-main">
+        <div>
+          <div className="assunto-title">{assunto.nome}</div>
+          <div className="row-actions assunto-crud">
+            <button
+              type="button"
+              className="btn ghost"
+              onClick={() =>
+                run(async () => {
+                  const nome = await promptName(`Renomear assunto (${assunto.nome})`);
+                  if (!nome) return;
+                  await api.renameAssunto(assunto.id, nome);
+                })
+              }
+            >
+              Renomear
+            </button>
+            <ConfirmButton
+              label="Excluir"
+              confirm={`Excluir assunto “${assunto.nome}”?`}
+              className="btn danger"
+              onConfirm={() =>
+                run(async () => api.deleteAssunto(assunto.id).then(() => undefined))
+              }
+            />
+          </div>
+        </div>
+        <div className="u20">
+          <span>ACUMULADO U20</span>
+          <Score value={assunto.u20} size="lg" />
+        </div>
+      </div>
+      <div className="recentes">
+        {assunto.recentes.length === 0 ? (
+          <span className="muted">Sem histórico</span>
+        ) : (
+          assunto.recentes.map((h) => (
+            <span key={h.id} className="chip">
+              <Score value={h.percentual} size="sm" />
+              <span className="chip-meta">
+                {h.acertos}/{h.quantidade}
+              </span>
+            </span>
+          ))
+        )}
+      </div>
+      <form
+        className="entry-form"
+        onSubmit={(e) => {
+          e.preventDefault();
+          const form = e.currentTarget;
+          const fd = new FormData(form);
+          const acertos = Number(fd.get("acertos"));
+          const quantidade = Number(fd.get("quantidade"));
+          run(async () => {
+            await api.addHistorico(assunto.id, acertos, quantidade);
+            form.reset();
+          });
+        }}
+      >
+        <label>
+          Acertos
+          <input name="acertos" type="number" min={0} required inputMode="numeric" />
+        </label>
+        <label>
+          Questões
+          <input name="quantidade" type="number" min={1} required inputMode="numeric" />
+        </label>
+        <button type="submit" className="btn primary">
+          Registrar
+        </button>
+      </form>
+    </article>
   );
 }
 
@@ -497,7 +622,7 @@ function EstruturaView({
       {tree.materias.map((m) => (
         <article key={m.id} className="struct-block">
           <div className="struct-row">
-            <strong>{m.nome}</strong>
+            <strong>{materiaTabLabel(m.nome)}</strong>
             <div className="row-actions">
               <button
                 type="button"
