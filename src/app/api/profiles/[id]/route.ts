@@ -3,6 +3,7 @@ import {
   AuthzError,
   deleteProfile,
   getActiveProfileId,
+  getOwnedProfile,
   setActiveProfileId,
   updateProfile,
 } from "@/lib/data";
@@ -23,6 +24,8 @@ export async function PATCH(request: Request, ctx: Ctx) {
     };
     const owner = { sub: viewer.sub, stage: viewer.stage };
     if (body.activate) {
+      const owned = await getOwnedProfile(owner, id);
+      if (!owned) return json({ error: "Perfil não encontrado" }, { status: 404 });
       const updated = body.nome
         ? await updateProfile(owner, id, {
             nome: body.nome,
@@ -30,7 +33,7 @@ export async function PATCH(request: Request, ctx: Ctx) {
             concurso: body.concurso,
             cargo: body.cargo,
           })
-        : null;
+        : owned;
       await setActiveProfileId(owner, id);
       return json({ ok: true, profile: updated, activeProfileId: id });
     }
