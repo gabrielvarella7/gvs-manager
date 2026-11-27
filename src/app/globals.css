@@ -92,8 +92,8 @@ select {
 }
 
 .brand-pulse {
-  /* lighten --grenat without drifting into pink/mauve */
-  color: color-mix(in srgb, var(--grenat) 58%, #f7ecee);
+  /* warm lighten of --grenat — wine, not mauve/pink */
+  color: color-mix(in srgb, var(--grenat) 78%, #fff0ee);
   letter-spacing: 0.02em;
 }
 
