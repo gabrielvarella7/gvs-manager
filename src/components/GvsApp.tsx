@@ -516,7 +516,7 @@ function AssuntoCard({
   return (
     <article className="assunto-row">
       <div className="assunto-main">
-        <div>
+        <div className="assunto-head-left">
           <div className="assunto-title">{assunto.nome}</div>
           <div className="row-actions assunto-crud">
             <button
@@ -532,19 +532,22 @@ function AssuntoCard({
             >
               Renomear
             </button>
-            <ConfirmButton
-              label="Excluir"
-              confirm={`Excluir assunto “${assunto.nome}”?`}
-              className="btn danger"
-              onConfirm={() =>
-                run(async () => api.deleteAssunto(assunto.id).then(() => undefined))
-              }
-            />
           </div>
         </div>
-        <div className="u20">
-          <span>ACUMULADO U20</span>
-          <Score value={assunto.u20} size="lg" />
+        <div className="assunto-side">
+          <ConfirmButton
+            label="×"
+            title={`Excluir assunto “${assunto.nome}”`}
+            confirm={`Excluir assunto “${assunto.nome}”?`}
+            className="btn-x"
+            onConfirm={() =>
+              run(async () => api.deleteAssunto(assunto.id).then(() => undefined))
+            }
+          />
+          <div className="u20">
+            <span>ACUMULADO U20</span>
+            <Score value={assunto.u20} size="lg" />
+          </div>
         </div>
       </div>
       <div className="recentes">
