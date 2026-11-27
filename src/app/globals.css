@@ -433,18 +433,26 @@ h2 {
 
 .chip {
   display: inline-flex;
-  align-items: baseline;
+  align-items: center;
   gap: 0.3rem;
   background: var(--bg-row);
   border: 1px solid var(--line-soft);
   border-radius: var(--radius);
-  padding: 0.2rem 0.4rem;
+  padding: 0.2rem 0.25rem 0.2rem 0.4rem;
 }
 
 .chip-meta {
   font-size: 0.7rem;
   color: var(--muted);
   font-family: var(--font-mono);
+}
+
+.chip-x {
+  width: 1.15rem;
+  height: 1.15rem;
+  font-size: 0.85rem;
+  margin: 0;
+  border-color: color-mix(in srgb, var(--danger) 28%, var(--line-soft));
 }
 
 .entry-form {

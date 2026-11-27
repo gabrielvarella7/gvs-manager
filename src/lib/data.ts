@@ -300,6 +300,46 @@ export async function appendHistorico(
   return rows[0];
 }
 
+export async function deleteHistorico(
+  owner: Owner,
+  historicoId: string,
+): Promise<{
+  id: string;
+  assuntoId: string;
+  acertos: number;
+  quantidade: number;
+  percentual: number;
+} | null> {
+  const rows = await sql<{
+    id: string;
+    assunto_id: string;
+    acertos: number;
+    quantidade: number;
+    percentual: number;
+    profile_id: string;
+  }>(
+    `select h.id, h.assunto_id, h.acertos, h.quantidade, h.percentual, m.profile_id
+     from historico h
+     join assuntos a on a.id = h.assunto_id
+     join topicos t on t.id = a.topico_id
+     join materias m on m.id = t.materia_id
+     join profiles p on p.id = m.profile_id
+     where h.id = $1 and p.owner_sub = $2 and p.stage = $3`,
+    [historicoId, owner.sub, owner.stage],
+  );
+  const row = rows[0];
+  if (!row) return null;
+  await sql(`delete from historico where id = $1`, [historicoId]);
+  await touchProfile(row.profile_id);
+  return {
+    id: row.id,
+    assuntoId: row.assunto_id,
+    acertos: row.acertos,
+    quantidade: row.quantidade,
+    percentual: row.percentual,
+  };
+}
+
 async function touchProfile(profileId: string) {
   await sql(`update profiles set updated_at = now() where id = $1`, [profileId]);
 }

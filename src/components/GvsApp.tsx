@@ -20,6 +20,16 @@ type NavTab =
   | { kind: "estrutura" }
   | { kind: "perfis" };
 
+type UndoSlot = {
+  label: string;
+  undo: () => Promise<void>;
+};
+
+type RunFn = (
+  action: () => Promise<void>,
+  undo?: UndoSlot,
+) => Promise<void>;
+
 export function GvsApp() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -28,6 +38,7 @@ export function GvsApp() {
   const [tree, setTree] = useState<TreePayload | null>(null);
   const [viewer, setViewer] = useState<{ name: string; simulated: boolean } | null>(null);
   const [nav, setNav] = useState<NavTab>({ kind: "resumo" });
+  const [undoSlot, setUndoSlot] = useState<UndoSlot | null>(null);
 
   const refresh = useCallback(async () => {
     setError(null);
@@ -83,13 +94,27 @@ export function GvsApp() {
     }
   }, [nav, tree]);
 
-  async function run(action: () => Promise<void>) {
+  async function run(action: () => Promise<void>, undo?: UndoSlot) {
     setError(null);
     try {
       await action();
       await refresh();
+      setUndoSlot(undo ?? null);
     } catch (e) {
       setError(e instanceof Error ? e.message : "Erro");
+    }
+  }
+
+  async function undoLast() {
+    if (!undoSlot) return;
+    const slot = undoSlot;
+    setUndoSlot(null);
+    setError(null);
+    try {
+      await slot.undo();
+      await refresh();
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Falha ao desfazer");
     }
   }
 
@@ -150,6 +175,15 @@ export function GvsApp() {
           </button>
         </nav>
         <div className="top-meta">
+          <button
+            type="button"
+            className="btn"
+            disabled={!undoSlot}
+            title={undoSlot ? `Desfazer: ${undoSlot.label}` : "Nada para desfazer"}
+            onClick={() => void undoLast()}
+          >
+            Desfazer
+          </button>
           {active ? (
             <select
               className="profile-select"
@@ -241,7 +275,7 @@ function VisaoGeral({
 }: {
   tree: TreePayload;
   onOpenMateria: (id: string) => void;
-  run: (a: () => Promise<void>) => Promise<void>;
+  run: RunFn;
 }) {
   return (
     <section className="visao">
@@ -323,7 +357,7 @@ function MateriaTabView({
   run,
 }: {
   materia: MateriaNode;
-  run: (a: () => Promise<void>) => Promise<void>;
+  run: RunFn;
 }) {
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const [visibleCount, setVisibleCount] = useState(ASSUNTOS_PAGE);
@@ -511,7 +545,7 @@ function AssuntoCard({
   run,
 }: {
   assunto: AssuntoNode;
-  run: (a: () => Promise<void>) => Promise<void>;
+  run: RunFn;
 }) {
   return (
     <article className="assunto-row">
@@ -522,13 +556,24 @@ function AssuntoCard({
             <button
               type="button"
               className="btn ghost"
-              onClick={() =>
-                run(async () => {
-                  const nome = await promptName(`Renomear assunto (${assunto.nome})`);
+              onClick={() => {
+                void (async () => {
+                  const previous = assunto.nome;
+                  const nome = await promptName(`Renomear assunto (${previous})`);
                   if (!nome) return;
-                  await api.renameAssunto(assunto.id, nome);
-                })
-              }
+                  await run(
+                    async () => {
+                      await api.renameAssunto(assunto.id, nome);
+                    },
+                    {
+                      label: `renomear “${previous}”`,
+                      undo: async () => {
+                        await api.renameAssunto(assunto.id, previous);
+                      },
+                    },
+                  );
+                })();
+              }}
             >
               Renomear
             </button>
@@ -560,6 +605,25 @@ function AssuntoCard({
               <span className="chip-meta">
                 {h.acertos}/{h.quantidade}
               </span>
+              <ConfirmButton
+                label="×"
+                title={`Excluir registro ${h.acertos}/${h.quantidade}`}
+                confirm={`Excluir este registro (${h.acertos}/${h.quantidade} · ${h.percentual.toFixed(1).replace(".", ",")}%)?`}
+                className="btn-x chip-x"
+                onConfirm={() =>
+                  run(
+                    async () => {
+                      await api.deleteHistorico(h.id);
+                    },
+                    {
+                      label: `excluir registro ${h.acertos}/${h.quantidade}`,
+                      undo: async () => {
+                        await api.addHistorico(assunto.id, h.acertos, h.quantidade);
+                      },
+                    },
+                  )
+                }
+              />
             </span>
           ))
         )}
@@ -572,10 +636,21 @@ function AssuntoCard({
           const fd = new FormData(form);
           const acertos = Number(fd.get("acertos"));
           const quantidade = Number(fd.get("quantidade"));
-          run(async () => {
-            await api.addHistorico(assunto.id, acertos, quantidade);
-            form.reset();
-          });
+          run(
+            async () => {
+              const { entry } = await api.addHistorico(assunto.id, acertos, quantidade);
+              form.reset();
+              // stash entry id on form dataset for undo registration after run completes
+              (form as HTMLFormElement & { __lastEntryId?: string }).__lastEntryId = entry.id;
+            },
+            {
+              label: `registrar ${acertos}/${quantidade}`,
+              undo: async () => {
+                const id = (form as HTMLFormElement & { __lastEntryId?: string }).__lastEntryId;
+                if (id) await api.deleteHistorico(id);
+              },
+            },
+          );
         }}
       >
         <label>
@@ -599,7 +674,7 @@ function EstruturaView({
   run,
 }: {
   tree: TreePayload;
-  run: (a: () => Promise<void>) => Promise<void>;
+  run: RunFn;
 }) {
   return (
     <section className="estrutura">
@@ -745,7 +820,7 @@ function PerfisView({
 }: {
   profiles: Profile[];
   activeId: string | null;
-  run: (a: () => Promise<void>) => Promise<void>;
+  run: RunFn;
 }) {
   const [form, setForm] = useState({
     nome: "",
