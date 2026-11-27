@@ -15,12 +15,12 @@
   --ink: #121a15;
   --ink-muted: #4e5c54;
   --accent: #ffffff;
-  --grenat: #9a2038;
+  --grenat: #6e1a2c;
   --ok: #146b38;
   --ok-dim: rgba(20, 107, 56, 0.14);
-  --low: #c85a5a;
-  --low-dim: rgba(200, 90, 90, 0.14);
-  --danger: #7a1830;
+  --low: var(--grenat);
+  --low-dim: rgba(110, 26, 44, 0.16);
+  --danger: #541320;
   --focus: #ffffff;
   --shadow: 0 3px 14px rgba(2, 22, 12, 0.32), 0 0 0 1px rgba(255, 255, 255, 0.06);
   --font-sans: var(--font-dm-sans), "Segoe UI", sans-serif;
@@ -92,7 +92,7 @@ select {
 }
 
 .brand-pulse {
-  color: #ffd6de;
+  color: #c48a94;
   letter-spacing: 0.02em;
 }
 
@@ -342,9 +342,9 @@ h2 {
 }
 
 .page-head .btn.danger {
-  color: #ffe4e9;
-  border-color: color-mix(in srgb, var(--grenat) 50%, #fff);
-  background: color-mix(in srgb, var(--grenat) 38%, transparent);
+  color: #e2c4c9;
+  border-color: color-mix(in srgb, var(--grenat) 55%, #fff);
+  background: color-mix(in srgb, var(--grenat) 42%, transparent);
 }
 
 .page-head .btn.ghost {
