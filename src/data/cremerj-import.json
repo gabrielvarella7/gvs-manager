@@ -1,0 +1,2847 @@
+{
+  "version": 1,
+  "source": "planilha PDF Gabriel — import CREMERJ",
+  "gaps": [
+    "PDF de RLM (02) não foi fornecido — matéria RLM permanece sem tópicos importados.",
+    "PDFs não trazem acertos/quantidade brutos; frações reconstruídas a partir do % visível (ex.: 66,67% → 2/3).",
+    "Importamos as colunas SCORES (e o único % quando há só um). U20 do PDF é metadado de referência, não entrada de histórico.",
+    "Quando U20 do PDF ≠ média dos scores visíveis, prevalece o histórico importado (app recalcula U20).",
+    "F Administração: páginas duplicadas da planilha foram deduplicadas.",
+    "Constitucional: segunda folha de Direitos e Garantias mesclada no mesmo tópico por nome de assunto.",
+    "Aulas sem nome / páginas vazias ignoradas. Notas livres do PDF não entram no modelo.",
+    "Assuntos só com estrutura (sem %) ficam sem histórico — correto."
+  ],
+  "stats": {
+    "materias": 6,
+    "topicos": 25,
+    "assuntos": 303,
+    "historico": 136,
+    "assuntos_com_score": 121
+  },
+  "materias": [
+    {
+      "nome": "Português",
+      "topicos": [
+        {
+          "nome": "Gramática",
+          "sort_order": 0,
+          "media_pdf": 60.0,
+          "assuntos": [
+            {
+              "nome": "Ortografia e Acentuação",
+              "sort_order": 0,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Ortografia e Acentuação II",
+              "sort_order": 1,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Ortografia e Acentuação III",
+              "sort_order": 2,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Ortografia e Acentuação - Exercícios",
+              "sort_order": 3,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Ortografia e Acentuação IV",
+              "sort_order": 4,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Ortografia e Acentuação V",
+              "sort_order": 5,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Morfologia",
+              "sort_order": 6,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Morfologia II",
+              "sort_order": 7,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Morfologia III",
+              "sort_order": 8,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Morfologia IV",
+              "sort_order": 9,
+              "u20_pdf": 60.0,
+              "historico": [
+                {
+                  "acertos": 3,
+                  "quantidade": 5,
+                  "percentual": 60.0
+                }
+              ]
+            },
+            {
+              "nome": "Morfologia V",
+              "sort_order": 10,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Morfologia - Exercícios",
+              "sort_order": 11,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Sintaxe do Período Simples",
+              "sort_order": 12,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Sintaxe - Sujeito",
+              "sort_order": 13,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Sintaxe - Sujeito II",
+              "sort_order": 14,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Sintaxe - Sujeito III",
+              "sort_order": 15,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Sintaxe - Sujeito IV",
+              "sort_order": 16,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Sintaxe - Sujeito Exercícios",
+              "sort_order": 17,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Predicação Verbal",
+              "sort_order": 18,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Predicação Verbal II",
+              "sort_order": 19,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Predicação Verbal III",
+              "sort_order": 20,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Predicação Verbal - Exercícios",
+              "sort_order": 21,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Termos Ligados ao Nome",
+              "sort_order": 22,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Termos Ligados ao Nome II",
+              "sort_order": 23,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Termos Ligados Ao Nome - Exercícios",
+              "sort_order": 24,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Demais Funções Sintáticas do P.S.",
+              "sort_order": 25,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Introdução Ao Período Composto",
+              "sort_order": 26,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Orações Subordinadas Substantivas",
+              "sort_order": 27,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Orações Subordinadas Substantivas II",
+              "sort_order": 28,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Orações Subordinadas Substantivas - Exercícios",
+              "sort_order": 29,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Orações Subordinadas Adjetivas",
+              "sort_order": 30,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Orações Subordinadas Adjetivas II",
+              "sort_order": 31,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Orações Subordinadas Adjetivas III",
+              "sort_order": 32,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Orações Subordinadas Adjetivas IV",
+              "sort_order": 33,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Orações Subordinadas Adjetivas V",
+              "sort_order": 34,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Orações Subordinadas Adjetivas - Exercícios",
+              "sort_order": 35,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Orações Subordinadas Adverbiais",
+              "sort_order": 36,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Orações Coordenadas",
+              "sort_order": 37,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Orações Subordinadas Adverbiais e Orações Coordenadas - Exercícios",
+              "sort_order": 38,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Orações Reduzidas e Justapostas",
+              "sort_order": 39,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Orações Reduzidas e Justapostas II",
+              "sort_order": 40,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Pontuação",
+              "sort_order": 41,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Pontuação II",
+              "sort_order": 42,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Pontuação III",
+              "sort_order": 43,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Pontuação IV",
+              "sort_order": 44,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Pontuação V",
+              "sort_order": 45,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Pontuação - Exercícios",
+              "sort_order": 46,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Pontuação - Exercícios II",
+              "sort_order": 47,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Pronomes Pessoais",
+              "sort_order": 48,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Pronomes Pessoais II",
+              "sort_order": 49,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Colocação Pronominal",
+              "sort_order": 50,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Colocação Pronominal II",
+              "sort_order": 51,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Pronomes Pessoais e Colocação Pronominal - Exercícios",
+              "sort_order": 52,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Vozes Verbais e SE",
+              "sort_order": 53,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Vozes Verbais e SE II",
+              "sort_order": 54,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Vozes Verbais e SE III",
+              "sort_order": 55,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Vozes Verbais e SE - Exercícios",
+              "sort_order": 56,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Crase",
+              "sort_order": 57,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Crase II",
+              "sort_order": 58,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Crase III",
+              "sort_order": 59,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Crase - Exercícios",
+              "sort_order": 60,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Crase - Exercícios II",
+              "sort_order": 61,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Reescrita",
+              "sort_order": 62,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Reescrita II",
+              "sort_order": 63,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Casos Especiais de Concordância Nominal e Verbal",
+              "sort_order": 64,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Casos Especiais de Concordância Nominal e Verbal II",
+              "sort_order": 65,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Empregos dos Tempos em Modos Verbais",
+              "sort_order": 66,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Correlação dos Tempos em Modos Verbais",
+              "sort_order": 67,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Verbos - Exercícios",
+              "sort_order": 68,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Verbos - Exercícios II",
+              "sort_order": 69,
+              "u20_pdf": null,
+              "historico": []
+            }
+          ]
+        },
+        {
+          "nome": "Interpretação e Semântica",
+          "sort_order": 1,
+          "media_pdf": null,
+          "assuntos": [
+            {
+              "nome": "Semântica – Significação Literal e Contextual",
+              "sort_order": 0,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Compreensão e Interpretação",
+              "sort_order": 1,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Coesão x Coerência",
+              "sort_order": 2,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Coesão Referencial",
+              "sort_order": 3,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Continuidade e Progressão Textual",
+              "sort_order": 4,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Coesão Sequencial",
+              "sort_order": 5,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Tipologia e Gêneros Textuais",
+              "sort_order": 6,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Narração",
+              "sort_order": 7,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Descrição",
+              "sort_order": 8,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Dissertação",
+              "sort_order": 9,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Gêneros Textuais: Crônica",
+              "sort_order": 10,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Gêneros Textuais: Carta",
+              "sort_order": 11,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Intertextualidade",
+              "sort_order": 12,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Discurso Direto, Indireto e Indireto Livre",
+              "sort_order": 13,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Reescrita/ Paráfrase",
+              "sort_order": 14,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Paródia",
+              "sort_order": 15,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Paralelismo Sintático e Semântico",
+              "sort_order": 16,
+              "u20_pdf": null,
+              "historico": []
+            }
+          ]
+        },
+        {
+          "nome": "Redação Oficial",
+          "sort_order": 2,
+          "media_pdf": 53.33,
+          "assuntos": [
+            {
+              "nome": "Definição, Atributos da Redação Oficial",
+              "sort_order": 0,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Adequação da Linguagem",
+              "sort_order": 1,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Padrão – Ofício – Adequação do Formato ao Gênero",
+              "sort_order": 2,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Formas de Tratamento e de Vocativo",
+              "sort_order": 3,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Estrutura e Variações no Ofício",
+              "sort_order": 4,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Estrutura e Variações no Ofício II",
+              "sort_order": 5,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Correio eletrônico (e - mail)",
+              "sort_order": 6,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Ata",
+              "sort_order": 7,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Relatório",
+              "sort_order": 8,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Parecer",
+              "sort_order": 9,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Certidão",
+              "sort_order": 10,
+              "u20_pdf": 66.67,
+              "historico": [
+                {
+                  "acertos": 2,
+                  "quantidade": 3,
+                  "percentual": 66.6667
+                }
+              ]
+            },
+            {
+              "nome": "Atestado",
+              "sort_order": 11,
+              "u20_pdf": 33.33,
+              "historico": [
+                {
+                  "acertos": 1,
+                  "quantidade": 3,
+                  "percentual": 33.3333
+                }
+              ]
+            },
+            {
+              "nome": "Declaração",
+              "sort_order": 12,
+              "u20_pdf": 33.33,
+              "historico": [
+                {
+                  "acertos": 1,
+                  "quantidade": 3,
+                  "percentual": 33.3333
+                }
+              ]
+            },
+            {
+              "nome": "Circular",
+              "sort_order": 13,
+              "u20_pdf": 66.67,
+              "historico": [
+                {
+                  "acertos": 2,
+                  "quantidade": 3,
+                  "percentual": 66.6667
+                }
+              ]
+            },
+            {
+              "nome": "Requerimento",
+              "sort_order": 14,
+              "u20_pdf": 66.67,
+              "historico": [
+                {
+                  "acertos": 2,
+                  "quantidade": 3,
+                  "percentual": 66.6667
+                }
+              ]
+            },
+            {
+              "nome": "Atos Normativos – Princípios Gerais",
+              "sort_order": 15,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Atos Normativos – Princípios Gerais II",
+              "sort_order": 16,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Edital",
+              "sort_order": 17,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Decreto",
+              "sort_order": 18,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Portaria",
+              "sort_order": 19,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Resolução",
+              "sort_order": 20,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Instrução Normativa",
+              "sort_order": 21,
+              "u20_pdf": null,
+              "historico": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nome": "Informática",
+      "topicos": [
+        {
+          "nome": "Introdução a Hardware para Sistemas Operacionais",
+          "sort_order": 0,
+          "media_pdf": 70.37,
+          "assuntos": [
+            {
+              "nome": "Introdução a Hardware para Sistemas Operacionais",
+              "sort_order": 0,
+              "u20_pdf": 66.67,
+              "historico": [
+                {
+                  "acertos": 2,
+                  "quantidade": 3,
+                  "percentual": 66.6667
+                }
+              ]
+            },
+            {
+              "nome": "Windows 11",
+              "sort_order": 1,
+              "u20_pdf": 100.0,
+              "historico": [
+                {
+                  "acertos": 1,
+                  "quantidade": 1,
+                  "percentual": 100.0
+                }
+              ]
+            },
+            {
+              "nome": "Windows 11 II",
+              "sort_order": 2,
+              "u20_pdf": 66.67,
+              "historico": [
+                {
+                  "acertos": 2,
+                  "quantidade": 3,
+                  "percentual": 66.6667
+                }
+              ]
+            },
+            {
+              "nome": "Windows 11 III",
+              "sort_order": 3,
+              "u20_pdf": 100.0,
+              "historico": [
+                {
+                  "acertos": 1,
+                  "quantidade": 1,
+                  "percentual": 100.0
+                }
+              ]
+            },
+            {
+              "nome": "Windows 11 IV",
+              "sort_order": 4,
+              "u20_pdf": 33.33,
+              "historico": [
+                {
+                  "acertos": 1,
+                  "quantidade": 3,
+                  "percentual": 33.3333
+                }
+              ]
+            },
+            {
+              "nome": "Windows 11 V",
+              "sort_order": 5,
+              "u20_pdf": 100.0,
+              "historico": [
+                {
+                  "acertos": 1,
+                  "quantidade": 1,
+                  "percentual": 100.0
+                }
+              ]
+            },
+            {
+              "nome": "Windows 11 VI",
+              "sort_order": 6,
+              "u20_pdf": 33.33,
+              "historico": [
+                {
+                  "acertos": 1,
+                  "quantidade": 3,
+                  "percentual": 33.3333
+                }
+              ]
+            },
+            {
+              "nome": "Windows 11 VII",
+              "sort_order": 7,
+              "u20_pdf": 100.0,
+              "historico": [
+                {
+                  "acertos": 1,
+                  "quantidade": 1,
+                  "percentual": 100.0
+                }
+              ]
+            },
+            {
+              "nome": "Windows 11 VIII",
+              "sort_order": 8,
+              "u20_pdf": 33.33,
+              "historico": [
+                {
+                  "acertos": 1,
+                  "quantidade": 3,
+                  "percentual": 33.3333
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "nome": "Google Agenda",
+          "sort_order": 1,
+          "media_pdf": 100.0,
+          "assuntos": [
+            {
+              "nome": "Google Agenda",
+              "sort_order": 0,
+              "u20_pdf": 100.0,
+              "historico": [
+                {
+                  "acertos": 1,
+                  "quantidade": 1,
+                  "percentual": 100.0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "nome": "Segurança da Informação",
+          "sort_order": 2,
+          "media_pdf": null,
+          "assuntos": [
+            {
+              "nome": "Segurança da Informação",
+              "sort_order": 0,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Segurança da Informação II",
+              "sort_order": 1,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Segurança da Informação III",
+              "sort_order": 2,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Segurança da Informação IV",
+              "sort_order": 3,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Segurança da Informação V",
+              "sort_order": 4,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Segurança da Informação VI",
+              "sort_order": 5,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Segurança da Informação VII",
+              "sort_order": 6,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Segurança da Informação VIII",
+              "sort_order": 7,
+              "u20_pdf": null,
+              "historico": []
+            }
+          ]
+        },
+        {
+          "nome": "Navegador Google Chrome",
+          "sort_order": 3,
+          "media_pdf": 77.78,
+          "assuntos": [
+            {
+              "nome": "Navegador Google Chrome",
+              "sort_order": 0,
+              "u20_pdf": 100.0,
+              "historico": [
+                {
+                  "acertos": 1,
+                  "quantidade": 1,
+                  "percentual": 100.0
+                }
+              ]
+            },
+            {
+              "nome": "Navegador Google Chrome II",
+              "sort_order": 1,
+              "u20_pdf": 66.67,
+              "historico": [
+                {
+                  "acertos": 2,
+                  "quantidade": 3,
+                  "percentual": 66.6667
+                }
+              ]
+            },
+            {
+              "nome": "Navegador Google Chrome III",
+              "sort_order": 2,
+              "u20_pdf": 66.67,
+              "historico": [
+                {
+                  "acertos": 2,
+                  "quantidade": 3,
+                  "percentual": 66.6667
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "nome": "Conhecimentos básicos em Google Workspace",
+          "sort_order": 4,
+          "media_pdf": 60.0,
+          "assuntos": [
+            {
+              "nome": "Conhecimentos básicos em Google Workspace",
+              "sort_order": 0,
+              "u20_pdf": 60.0,
+              "historico": [
+                {
+                  "acertos": 3,
+                  "quantidade": 5,
+                  "percentual": 60.0
+                }
+              ]
+            },
+            {
+              "nome": "Conhecimentos básicos em Google Workspace ll",
+              "sort_order": 1,
+              "u20_pdf": 60.0,
+              "historico": [
+                {
+                  "acertos": 3,
+                  "quantidade": 5,
+                  "percentual": 60.0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "nome": "Google Meet",
+          "sort_order": 5,
+          "media_pdf": 100.0,
+          "assuntos": [
+            {
+              "nome": "Google Meet",
+              "sort_order": 0,
+              "u20_pdf": 100.0,
+              "historico": [
+                {
+                  "acertos": 1,
+                  "quantidade": 1,
+                  "percentual": 100.0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "nome": "Navegador Mozilla Firefox",
+          "sort_order": 6,
+          "media_pdf": 77.08,
+          "assuntos": [
+            {
+              "nome": "Navegador Mozilla Firefox",
+              "sort_order": 0,
+              "u20_pdf": 75.0,
+              "historico": [
+                {
+                  "acertos": 3,
+                  "quantidade": 4,
+                  "percentual": 75.0
+                }
+              ]
+            },
+            {
+              "nome": "Navegador Mozilla Firefox II",
+              "sort_order": 1,
+              "u20_pdf": 33.33,
+              "historico": [
+                {
+                  "acertos": 1,
+                  "quantidade": 3,
+                  "percentual": 33.3333
+                }
+              ]
+            },
+            {
+              "nome": "Navegador Mozilla Firefox III",
+              "sort_order": 2,
+              "u20_pdf": 100.0,
+              "historico": [
+                {
+                  "acertos": 1,
+                  "quantidade": 1,
+                  "percentual": 100.0
+                }
+              ]
+            },
+            {
+              "nome": "Navegador Mozilla Firefox IV",
+              "sort_order": 3,
+              "u20_pdf": 100.0,
+              "historico": [
+                {
+                  "acertos": 1,
+                  "quantidade": 1,
+                  "percentual": 100.0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "nome": "Tarefas: gerenciamento de atividades usando Google Tasks",
+          "sort_order": 7,
+          "media_pdf": 20.0,
+          "assuntos": [
+            {
+              "nome": "Tarefas: gerenciamento de atividades usando Google Tasks (Google Tarefas)",
+              "sort_order": 0,
+              "u20_pdf": 20.0,
+              "historico": [
+                {
+                  "acertos": 1,
+                  "quantidade": 5,
+                  "percentual": 20.0
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nome": "CREMERJ",
+      "topicos": [
+        {
+          "nome": "Lei 3.268/57",
+          "sort_order": 0,
+          "media_pdf": 77.78,
+          "assuntos": [
+            {
+              "nome": "Lei 3.268/57",
+              "sort_order": 0,
+              "u20_pdf": 66.67,
+              "historico": [
+                {
+                  "acertos": 2,
+                  "quantidade": 3,
+                  "percentual": 66.6667
+                }
+              ]
+            },
+            {
+              "nome": "Lei 3.268/57 II",
+              "sort_order": 1,
+              "u20_pdf": 100.0,
+              "historico": [
+                {
+                  "acertos": 1,
+                  "quantidade": 1,
+                  "percentual": 100.0
+                }
+              ]
+            },
+            {
+              "nome": "Lei 3.268/57 III",
+              "sort_order": 2,
+              "u20_pdf": 66.67,
+              "historico": [
+                {
+                  "acertos": 2,
+                  "quantidade": 3,
+                  "percentual": 66.6667
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "nome": "Decreto 44.045/58",
+          "sort_order": 1,
+          "media_pdf": 72.22,
+          "assuntos": [
+            {
+              "nome": "Decreto 44.045/58",
+              "sort_order": 0,
+              "u20_pdf": 33.33,
+              "historico": [
+                {
+                  "acertos": 1,
+                  "quantidade": 3,
+                  "percentual": 33.3333
+                }
+              ]
+            },
+            {
+              "nome": "Decreto 44.045/58 II",
+              "sort_order": 1,
+              "u20_pdf": 100.0,
+              "historico": [
+                {
+                  "acertos": 1,
+                  "quantidade": 1,
+                  "percentual": 100.0
+                }
+              ]
+            },
+            {
+              "nome": "Decreto 44.045/58 III",
+              "sort_order": 2,
+              "u20_pdf": 66.67,
+              "historico": [
+                {
+                  "acertos": 2,
+                  "quantidade": 3,
+                  "percentual": 66.6667
+                }
+              ]
+            },
+            {
+              "nome": "Decreto nº 10.911/2021 (Altera o Decreto nº 44.045/1958)",
+              "sort_order": 3,
+              "u20_pdf": 100.0,
+              "historico": [
+                {
+                  "acertos": 1,
+                  "quantidade": 1,
+                  "percentual": 100.0
+                }
+              ]
+            },
+            {
+              "nome": "Decreto nº 10.911/2021 (Altera o Decreto nº 44.045/1958) II",
+              "sort_order": 4,
+              "u20_pdf": 66.67,
+              "historico": [
+                {
+                  "acertos": 2,
+                  "quantidade": 3,
+                  "percentual": 66.6667
+                }
+              ]
+            },
+            {
+              "nome": "Decreto nº 10.911/2021 (Altera o Decreto nº 44.045/1958) III",
+              "sort_order": 5,
+              "u20_pdf": 66.67,
+              "historico": [
+                {
+                  "acertos": 2,
+                  "quantidade": 3,
+                  "percentual": 66.6667
+                }
+              ]
+            },
+            {
+              "nome": "Decreto nº 10.911/2021 (Altera o Decreto nº 44.045/1958) - Exercícios",
+              "sort_order": 6,
+              "u20_pdf": null,
+              "historico": []
+            }
+          ]
+        },
+        {
+          "nome": "Código de Ética Médica - Resolução nº 2.217/18 - CFM",
+          "sort_order": 2,
+          "media_pdf": 93.33,
+          "assuntos": [
+            {
+              "nome": "Código de Ética Médica - Resolução nº 2.217/18 - CFM",
+              "sort_order": 0,
+              "u20_pdf": 100.0,
+              "historico": [
+                {
+                  "acertos": 1,
+                  "quantidade": 1,
+                  "percentual": 100.0
+                }
+              ]
+            },
+            {
+              "nome": "Código de Ética Médica - Resolução nº 2.217/18 - CFM II",
+              "sort_order": 1,
+              "u20_pdf": 100.0,
+              "historico": [
+                {
+                  "acertos": 1,
+                  "quantidade": 1,
+                  "percentual": 100.0
+                }
+              ]
+            },
+            {
+              "nome": "Código de Ética Médica - Resolução nº 2.217/18 - CFM III",
+              "sort_order": 2,
+              "u20_pdf": 100.0,
+              "historico": [
+                {
+                  "acertos": 1,
+                  "quantidade": 1,
+                  "percentual": 100.0
+                }
+              ]
+            },
+            {
+              "nome": "Código de Ética Médica - Resolução nº 2.217/18 - CFM IV",
+              "sort_order": 3,
+              "u20_pdf": 66.67,
+              "historico": [
+                {
+                  "acertos": 2,
+                  "quantidade": 3,
+                  "percentual": 66.6667
+                }
+              ]
+            },
+            {
+              "nome": "Código de Ética Médica - Resolução nº 2.217/18 - CFM V",
+              "sort_order": 4,
+              "u20_pdf": 100.0,
+              "historico": [
+                {
+                  "acertos": 1,
+                  "quantidade": 1,
+                  "percentual": 100.0
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nome": "Constitucional",
+      "topicos": [
+        {
+          "nome": "Princípios Fundamentais",
+          "sort_order": 0,
+          "media_pdf": 66.67,
+          "assuntos": [
+            {
+              "nome": "Princípios Fundamentais",
+              "sort_order": 0,
+              "u20_pdf": 83.33,
+              "historico": [
+                {
+                  "acertos": 9,
+                  "quantidade": 10,
+                  "percentual": 90.0
+                },
+                {
+                  "acertos": 4,
+                  "quantidade": 5,
+                  "percentual": 80.0
+                },
+                {
+                  "acertos": 2,
+                  "quantidade": 3,
+                  "percentual": 66.6667
+                }
+              ]
+            },
+            {
+              "nome": "Princípios Fundamentais II",
+              "sort_order": 1,
+              "u20_pdf": 50.0,
+              "historico": [
+                {
+                  "acertos": 1,
+                  "quantidade": 2,
+                  "percentual": 50.0
+                },
+                {
+                  "acertos": 2,
+                  "quantidade": 5,
+                  "percentual": 40.0
+                },
+                {
+                  "acertos": 2,
+                  "quantidade": 3,
+                  "percentual": 66.6667
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "nome": "Aplicabilidade das Normas",
+          "sort_order": 1,
+          "media_pdf": 80.0,
+          "assuntos": [
+            {
+              "nome": "Teoria da Constituição - Eficácia e Aplicabilidade das Normas Constitucionais (FILTROS SÃO IGUAIS)",
+              "sort_order": 0,
+              "u20_pdf": 80.0,
+              "historico": [
+                {
+                  "acertos": 3,
+                  "quantidade": 5,
+                  "percentual": 60.0
+                },
+                {
+                  "acertos": 1,
+                  "quantidade": 1,
+                  "percentual": 100.0
+                }
+              ]
+            },
+            {
+              "nome": "Teoria da Constituição - Eficácia e Aplicabilidade das Normas Constitucionais II",
+              "sort_order": 1,
+              "u20_pdf": null,
+              "historico": []
+            }
+          ]
+        },
+        {
+          "nome": "Direitos e Garantias Fundamentais",
+          "sort_order": 2,
+          "media_pdf": 18.33,
+          "assuntos": [
+            {
+              "nome": "Direitos e Garantias Fundamentais - Teoria Geral dos Direitos Fundamentais",
+              "sort_order": 0,
+              "u20_pdf": 40.0,
+              "historico": [
+                {
+                  "acertos": 2,
+                  "quantidade": 5,
+                  "percentual": 40.0
+                },
+                {
+                  "acertos": 1,
+                  "quantidade": 1,
+                  "percentual": 100.0
+                }
+              ]
+            },
+            {
+              "nome": "Direitos e Garantias Fundamentais - Teoria Geral dos Direitos Fundamentais ll",
+              "sort_order": 1,
+              "u20_pdf": 60.0,
+              "historico": [
+                {
+                  "acertos": 3,
+                  "quantidade": 5,
+                  "percentual": 60.0
+                },
+                {
+                  "acertos": 1,
+                  "quantidade": 1,
+                  "percentual": 100.0
+                }
+              ]
+            },
+            {
+              "nome": "Direitos e Garantias Fundamentais - Direitos e Deveres Individuais e Coletivos",
+              "sort_order": 2,
+              "u20_pdf": 66.67,
+              "historico": [
+                {
+                  "acertos": 2,
+                  "quantidade": 3,
+                  "percentual": 66.6667
+                },
+                {
+                  "acertos": 1,
+                  "quantidade": 1,
+                  "percentual": 100.0
+                }
+              ]
+            },
+            {
+              "nome": "Direitos e Garantias Fundamentais - Direitos e Deveres Individuais e Coletivos ll",
+              "sort_order": 3,
+              "u20_pdf": 33.33,
+              "historico": [
+                {
+                  "acertos": 1,
+                  "quantidade": 3,
+                  "percentual": 33.3333
+                },
+                {
+                  "acertos": 1,
+                  "quantidade": 1,
+                  "percentual": 100.0
+                }
+              ]
+            },
+            {
+              "nome": "Direitos e Garantias Fundamentais - Direitos e Deveres Individuais e Coletivos lll",
+              "sort_order": 4,
+              "u20_pdf": 66.67,
+              "historico": [
+                {
+                  "acertos": 2,
+                  "quantidade": 3,
+                  "percentual": 66.6667
+                },
+                {
+                  "acertos": 4,
+                  "quantidade": 5,
+                  "percentual": 80.0
+                }
+              ]
+            },
+            {
+              "nome": "Direitos e Garantias Fundamentais - Direitos e Deveres Individuais e Coletivos lV",
+              "sort_order": 5,
+              "u20_pdf": 33.33,
+              "historico": [
+                {
+                  "acertos": 1,
+                  "quantidade": 3,
+                  "percentual": 33.3333
+                },
+                {
+                  "acertos": 4,
+                  "quantidade": 5,
+                  "percentual": 80.0
+                }
+              ]
+            },
+            {
+              "nome": "Direitos e Garantias Fundamentais - Direitos e Deveres Individuais e Coletivos V",
+              "sort_order": 6,
+              "u20_pdf": 0.0,
+              "historico": [
+                {
+                  "acertos": 0,
+                  "quantidade": 1,
+                  "percentual": 0.0
+                },
+                {
+                  "acertos": 1,
+                  "quantidade": 1,
+                  "percentual": 100.0
+                }
+              ]
+            },
+            {
+              "nome": "Direitos e Garantias Fundamentais - Direitos e Deveres Individuais e Coletivos Vl",
+              "sort_order": 7,
+              "u20_pdf": 0.0,
+              "historico": [
+                {
+                  "acertos": 0,
+                  "quantidade": 1,
+                  "percentual": 0.0
+                },
+                {
+                  "acertos": 4,
+                  "quantidade": 5,
+                  "percentual": 80.0
+                }
+              ]
+            },
+            {
+              "nome": "Direitos e Garantias Fundamentais - Direitos e Deveres Individuais e Coletivos Vll",
+              "sort_order": 8,
+              "u20_pdf": 0.0,
+              "historico": [
+                {
+                  "acertos": 0,
+                  "quantidade": 1,
+                  "percentual": 0.0
+                },
+                {
+                  "acertos": 3,
+                  "quantidade": 5,
+                  "percentual": 60.0
+                }
+              ]
+            },
+            {
+              "nome": "Direitos e Garantias Fundamentais - Direitos e Deveres Individuais e Coletivos Vlll",
+              "sort_order": 9,
+              "u20_pdf": 0.0,
+              "historico": [
+                {
+                  "acertos": 0,
+                  "quantidade": 1,
+                  "percentual": 0.0
+                },
+                {
+                  "acertos": 3,
+                  "quantidade": 5,
+                  "percentual": 60.0
+                }
+              ]
+            },
+            {
+              "nome": "Direitos e Garantias Fundamentais - Direitos e Deveres Individuais e Coletivos lX",
+              "sort_order": 10,
+              "u20_pdf": 0.0,
+              "historico": [
+                {
+                  "acertos": 0,
+                  "quantidade": 1,
+                  "percentual": 0.0
+                }
+              ]
+            },
+            {
+              "nome": "Direitos e Garantias Fundamentais - Direitos e Deveres Individuais e Coletivos X",
+              "sort_order": 11,
+              "u20_pdf": 0.0,
+              "historico": [
+                {
+                  "acertos": 0,
+                  "quantidade": 1,
+                  "percentual": 0.0
+                }
+              ]
+            },
+            {
+              "nome": "Direitos e Garantias Fundamentais - Direitos e Deveres Individuais e Coletivos Xl",
+              "sort_order": 12,
+              "u20_pdf": 0.0,
+              "historico": [
+                {
+                  "acertos": 0,
+                  "quantidade": 1,
+                  "percentual": 0.0
+                }
+              ]
+            },
+            {
+              "nome": "Direitos e Garantias Fundamentais - Direitos e Deveres Individuais e Coletivos XII",
+              "sort_order": 13,
+              "u20_pdf": 0.0,
+              "historico": [
+                {
+                  "acertos": 0,
+                  "quantidade": 1,
+                  "percentual": 0.0
+                }
+              ]
+            },
+            {
+              "nome": "Direitos e Garantias Fundamentais - Direitos e Deveres Individuais e Coletivos XIII",
+              "sort_order": 14,
+              "u20_pdf": 0.0,
+              "historico": [
+                {
+                  "acertos": 0,
+                  "quantidade": 1,
+                  "percentual": 0.0
+                }
+              ]
+            },
+            {
+              "nome": "Direitos e Garantias Fundamentais - Remédios Constitucionais",
+              "sort_order": 15,
+              "u20_pdf": 0.0,
+              "historico": [
+                {
+                  "acertos": 0,
+                  "quantidade": 1,
+                  "percentual": 0.0
+                }
+              ]
+            },
+            {
+              "nome": "Direitos e Garantias Fundamentais - Remédios Constitucionais IIl",
+              "sort_order": 16,
+              "u20_pdf": 0.0,
+              "historico": [
+                {
+                  "acertos": 0,
+                  "quantidade": 1,
+                  "percentual": 0.0
+                }
+              ]
+            },
+            {
+              "nome": "Direitos e Garantias Fundamentais - Remédios Constitucionais III",
+              "sort_order": 17,
+              "u20_pdf": 0.0,
+              "historico": [
+                {
+                  "acertos": 0,
+                  "quantidade": 1,
+                  "percentual": 0.0
+                }
+              ]
+            },
+            {
+              "nome": "Direitos e Garantias Fundamentais - Remédios Constitucionais IV",
+              "sort_order": 18,
+              "u20_pdf": 0.0,
+              "historico": [
+                {
+                  "acertos": 0,
+                  "quantidade": 1,
+                  "percentual": 0.0
+                }
+              ]
+            },
+            {
+              "nome": "Direitos e Garantias Fundamentais - Remédios Constitucionais V",
+              "sort_order": 19,
+              "u20_pdf": 0.0,
+              "historico": [
+                {
+                  "acertos": 0,
+                  "quantidade": 1,
+                  "percentual": 0.0
+                }
+              ]
+            },
+            {
+              "nome": "Direitos e Garantias Fundamentais - Direitos Sociais",
+              "sort_order": 20,
+              "u20_pdf": 0.0,
+              "historico": [
+                {
+                  "acertos": 0,
+                  "quantidade": 1,
+                  "percentual": 0.0
+                }
+              ]
+            },
+            {
+              "nome": "Direitos e Garantias Fundamentais - Direitos Sociais II",
+              "sort_order": 21,
+              "u20_pdf": 25.0,
+              "historico": [
+                {
+                  "acertos": 1,
+                  "quantidade": 4,
+                  "percentual": 25.0
+                }
+              ]
+            },
+            {
+              "nome": "Direitos e Garantias Fundamentais - Direitos Sociais III",
+              "sort_order": 22,
+              "u20_pdf": 50.0,
+              "historico": [
+                {
+                  "acertos": 1,
+                  "quantidade": 2,
+                  "percentual": 50.0
+                }
+              ]
+            },
+            {
+              "nome": "Direitos e Garantias Fundamentais - Direitos de Nacionalidade",
+              "sort_order": 23,
+              "u20_pdf": 80.0,
+              "historico": [
+                {
+                  "acertos": 4,
+                  "quantidade": 5,
+                  "percentual": 80.0
+                }
+              ]
+            },
+            {
+              "nome": "Direitos e Garantias Fundamentais - Direitos Políticos",
+              "sort_order": 24,
+              "u20_pdf": 40.0,
+              "historico": [
+                {
+                  "acertos": 2,
+                  "quantidade": 5,
+                  "percentual": 40.0
+                }
+              ]
+            },
+            {
+              "nome": "Direitos e Garantias Fundamentais - Direitos Políticos ll",
+              "sort_order": 25,
+              "u20_pdf": 0.0,
+              "historico": [
+                {
+                  "acertos": 0,
+                  "quantidade": 1,
+                  "percentual": 0.0
+                }
+              ]
+            },
+            {
+              "nome": "Direitos e Garantias Fundamentais - Partidos Políticos",
+              "sort_order": 26,
+              "u20_pdf": 0.0,
+              "historico": [
+                {
+                  "acertos": 0,
+                  "quantidade": 1,
+                  "percentual": 0.0
+                }
+              ]
+            },
+            {
+              "nome": "Direitos e Garantias Fundamentais - Direitos e Deveres Individuais e Coletivos XIII até o 15",
+              "sort_order": 1014,
+              "u20_pdf": null,
+              "historico": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nome": "D Administrativo",
+      "topicos": [
+        {
+          "nome": "Princípios Constitucionais",
+          "sort_order": 0,
+          "media_pdf": 86.67,
+          "assuntos": [
+            {
+              "nome": "Princípios da Administração Pública",
+              "sort_order": 0,
+              "u20_pdf": 66.67,
+              "historico": [
+                {
+                  "acertos": 2,
+                  "quantidade": 3,
+                  "percentual": 66.6667
+                }
+              ]
+            },
+            {
+              "nome": "Princípios da Administração Pública ll",
+              "sort_order": 1,
+              "u20_pdf": 33.33,
+              "historico": [
+                {
+                  "acertos": 1,
+                  "quantidade": 3,
+                  "percentual": 33.3333
+                }
+              ]
+            },
+            {
+              "nome": "Princípios da Administração Pública lll",
+              "sort_order": 2,
+              "u20_pdf": 100.0,
+              "historico": [
+                {
+                  "acertos": 1,
+                  "quantidade": 1,
+                  "percentual": 100.0
+                }
+              ]
+            },
+            {
+              "nome": "Princípios da Administração Pública lV",
+              "sort_order": 3,
+              "u20_pdf": 100.0,
+              "historico": [
+                {
+                  "acertos": 1,
+                  "quantidade": 1,
+                  "percentual": 100.0
+                }
+              ]
+            },
+            {
+              "nome": "Princípios da Administração Pública V",
+              "sort_order": 4,
+              "u20_pdf": 100.0,
+              "historico": [
+                {
+                  "acertos": 1,
+                  "quantidade": 1,
+                  "percentual": 100.0
+                }
+              ]
+            },
+            {
+              "nome": "Princípios da Administração Pública Vl",
+              "sort_order": 5,
+              "u20_pdf": 100.0,
+              "historico": [
+                {
+                  "acertos": 1,
+                  "quantidade": 1,
+                  "percentual": 100.0
+                }
+              ]
+            },
+            {
+              "nome": "Princípios da Administração Pública Vll",
+              "sort_order": 6,
+              "u20_pdf": 66.67,
+              "historico": [
+                {
+                  "acertos": 2,
+                  "quantidade": 3,
+                  "percentual": 66.6667
+                }
+              ]
+            },
+            {
+              "nome": "Princípios da Administração Pública Vlll",
+              "sort_order": 7,
+              "u20_pdf": 100.0,
+              "historico": [
+                {
+                  "acertos": 1,
+                  "quantidade": 1,
+                  "percentual": 100.0
+                }
+              ]
+            },
+            {
+              "nome": "Princípios da Administração Pública lX",
+              "sort_order": 8,
+              "u20_pdf": 100.0,
+              "historico": [
+                {
+                  "acertos": 1,
+                  "quantidade": 1,
+                  "percentual": 100.0
+                }
+              ]
+            },
+            {
+              "nome": "Princípios da Administração Pública X",
+              "sort_order": 9,
+              "u20_pdf": 100.0,
+              "historico": [
+                {
+                  "acertos": 1,
+                  "quantidade": 1,
+                  "percentual": 100.0
+                }
+              ]
+            },
+            {
+              "nome": "Princípios da Administração Pública - Aula Resumo",
+              "sort_order": 10,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Princípios da Administração Pública - Aula Resumo II",
+              "sort_order": 11,
+              "u20_pdf": null,
+              "historico": []
+            }
+          ]
+        },
+        {
+          "nome": "Desconcentração e Descentralização",
+          "sort_order": 1,
+          "media_pdf": 77.78,
+          "assuntos": [
+            {
+              "nome": "Administração Pública",
+              "sort_order": 0,
+              "u20_pdf": 100.0,
+              "historico": [
+                {
+                  "acertos": 1,
+                  "quantidade": 1,
+                  "percentual": 100.0
+                }
+              ]
+            },
+            {
+              "nome": "Administração Pública II",
+              "sort_order": 1,
+              "u20_pdf": 100.0,
+              "historico": [
+                {
+                  "acertos": 1,
+                  "quantidade": 1,
+                  "percentual": 100.0
+                }
+              ]
+            },
+            {
+              "nome": "Administração Pública (Órgãos Públicos)",
+              "sort_order": 2,
+              "u20_pdf": 100.0,
+              "historico": [
+                {
+                  "acertos": 1,
+                  "quantidade": 1,
+                  "percentual": 100.0
+                }
+              ]
+            },
+            {
+              "nome": "Administração Pública (Autarquia)",
+              "sort_order": 3,
+              "u20_pdf": 66.67,
+              "historico": [
+                {
+                  "acertos": 2,
+                  "quantidade": 3,
+                  "percentual": 66.6667
+                }
+              ]
+            },
+            {
+              "nome": "Administração Pública (Autarquia) II",
+              "sort_order": 4,
+              "u20_pdf": 66.67,
+              "historico": [
+                {
+                  "acertos": 2,
+                  "quantidade": 3,
+                  "percentual": 66.6667
+                }
+              ]
+            },
+            {
+              "nome": "Administração Pública (Autarquia) III",
+              "sort_order": 5,
+              "u20_pdf": 33.33,
+              "historico": [
+                {
+                  "acertos": 1,
+                  "quantidade": 3,
+                  "percentual": 33.3333
+                }
+              ]
+            },
+            {
+              "nome": "Administração Pública (Fundação Pública)",
+              "sort_order": 6,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Administração Pública (Empresas Estatais)",
+              "sort_order": 7,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Administração Pública (Empresas Estatais) II",
+              "sort_order": 8,
+              "u20_pdf": null,
+              "historico": []
+            }
+          ]
+        },
+        {
+          "nome": "Poderes da ADM Pública",
+          "sort_order": 2,
+          "media_pdf": 85.71,
+          "assuntos": [
+            {
+              "nome": "Poderes Administrativos - Conceito",
+              "sort_order": 0,
+              "u20_pdf": 66.67,
+              "historico": [
+                {
+                  "acertos": 2,
+                  "quantidade": 3,
+                  "percentual": 66.6667
+                }
+              ]
+            },
+            {
+              "nome": "Poderes Administrativos - Poder Hierárquico",
+              "sort_order": 1,
+              "u20_pdf": 66.67,
+              "historico": [
+                {
+                  "acertos": 2,
+                  "quantidade": 3,
+                  "percentual": 66.6667
+                }
+              ]
+            },
+            {
+              "nome": "Poderes Administrativos - Poder Disciplinar",
+              "sort_order": 2,
+              "u20_pdf": 100.0,
+              "historico": [
+                {
+                  "acertos": 1,
+                  "quantidade": 1,
+                  "percentual": 100.0
+                }
+              ]
+            },
+            {
+              "nome": "Poderes Administrativos - Poder Regulamentar",
+              "sort_order": 3,
+              "u20_pdf": 100.0,
+              "historico": [
+                {
+                  "acertos": 1,
+                  "quantidade": 1,
+                  "percentual": 100.0
+                }
+              ]
+            },
+            {
+              "nome": "Poderes Administrativos - Poder de Polícia",
+              "sort_order": 4,
+              "u20_pdf": 66.67,
+              "historico": [
+                {
+                  "acertos": 2,
+                  "quantidade": 3,
+                  "percentual": 66.6667
+                }
+              ]
+            },
+            {
+              "nome": "Poderes Administrativos - Poder de Polícia II",
+              "sort_order": 5,
+              "u20_pdf": 100.0,
+              "historico": [
+                {
+                  "acertos": 1,
+                  "quantidade": 1,
+                  "percentual": 100.0
+                }
+              ]
+            },
+            {
+              "nome": "Poderes Administrativos - Abuso de Poder",
+              "sort_order": 6,
+              "u20_pdf": 100.0,
+              "historico": [
+                {
+                  "acertos": 1,
+                  "quantidade": 1,
+                  "percentual": 100.0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "nome": "Atos Administrativos",
+          "sort_order": 3,
+          "media_pdf": 83.33,
+          "assuntos": [
+            {
+              "nome": "Atos Administrativos",
+              "sort_order": 0,
+              "u20_pdf": 100.0,
+              "historico": [
+                {
+                  "acertos": 1,
+                  "quantidade": 1,
+                  "percentual": 100.0
+                }
+              ]
+            },
+            {
+              "nome": "Atos Administrativos II",
+              "sort_order": 1,
+              "u20_pdf": 100.0,
+              "historico": [
+                {
+                  "acertos": 1,
+                  "quantidade": 1,
+                  "percentual": 100.0
+                }
+              ]
+            },
+            {
+              "nome": "Atos Administrativos III",
+              "sort_order": 2,
+              "u20_pdf": 100.0,
+              "historico": [
+                {
+                  "acertos": 1,
+                  "quantidade": 1,
+                  "percentual": 100.0
+                }
+              ]
+            },
+            {
+              "nome": "Atos Administrativos IV",
+              "sort_order": 3,
+              "u20_pdf": 66.67,
+              "historico": [
+                {
+                  "acertos": 2,
+                  "quantidade": 3,
+                  "percentual": 66.6667
+                }
+              ]
+            },
+            {
+              "nome": "Atos Administrativos V",
+              "sort_order": 4,
+              "u20_pdf": 100.0,
+              "historico": [
+                {
+                  "acertos": 1,
+                  "quantidade": 1,
+                  "percentual": 100.0
+                }
+              ]
+            },
+            {
+              "nome": "Atos Administrativos VI",
+              "sort_order": 5,
+              "u20_pdf": 33.33,
+              "historico": [
+                {
+                  "acertos": 1,
+                  "quantidade": 3,
+                  "percentual": 33.3333
+                }
+              ]
+            },
+            {
+              "nome": "Atos Administrativos VII",
+              "sort_order": 6,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Atos Administrativos VIII",
+              "sort_order": 7,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Atos Administrativos IX",
+              "sort_order": 8,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Atos Administrativos X",
+              "sort_order": 9,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Atos Administrativos XI",
+              "sort_order": 10,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Atos Administrativos XII",
+              "sort_order": 11,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Atos Administrativos XIII",
+              "sort_order": 12,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Atos Administrativos - Aula Resumo",
+              "sort_order": 13,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Atos Administrativos - Aula Resumo II",
+              "sort_order": 14,
+              "u20_pdf": null,
+              "historico": []
+            }
+          ]
+        },
+        {
+          "nome": "Bens Públicos",
+          "sort_order": 4,
+          "media_pdf": 66.67,
+          "assuntos": [
+            {
+              "nome": "Bens Públicos",
+              "sort_order": 0,
+              "u20_pdf": 66.67,
+              "historico": [
+                {
+                  "acertos": 2,
+                  "quantidade": 3,
+                  "percentual": 66.6667
+                }
+              ]
+            },
+            {
+              "nome": "Bens Públicos II",
+              "sort_order": 1,
+              "u20_pdf": 33.33,
+              "historico": [
+                {
+                  "acertos": 1,
+                  "quantidade": 3,
+                  "percentual": 33.3333
+                }
+              ]
+            },
+            {
+              "nome": "Bens Públicos III",
+              "sort_order": 2,
+              "u20_pdf": 66.67,
+              "historico": [
+                {
+                  "acertos": 2,
+                  "quantidade": 3,
+                  "percentual": 66.6667
+                }
+              ]
+            },
+            {
+              "nome": "Bens Públicos IV",
+              "sort_order": 3,
+              "u20_pdf": 100.0,
+              "historico": [
+                {
+                  "acertos": 1,
+                  "quantidade": 1,
+                  "percentual": 100.0
+                }
+              ]
+            },
+            {
+              "nome": "Aula Resumo - Bens Públicos",
+              "sort_order": 4,
+              "u20_pdf": null,
+              "historico": []
+            }
+          ]
+        },
+        {
+          "nome": "Licitações e Contratos (Lei 14.133/2021)",
+          "sort_order": 5,
+          "media_pdf": 41.67,
+          "assuntos": [
+            {
+              "nome": "Lei Nº 14.133/2021 - Licitação - Introdução",
+              "sort_order": 0,
+              "u20_pdf": 33.33,
+              "historico": [
+                {
+                  "acertos": 1,
+                  "quantidade": 3,
+                  "percentual": 33.3333
+                }
+              ]
+            },
+            {
+              "nome": "Lei Nº 14.133/2021 - Licitação - Âmbito de Aplicação",
+              "sort_order": 1,
+              "u20_pdf": 66.67,
+              "historico": [
+                {
+                  "acertos": 2,
+                  "quantidade": 3,
+                  "percentual": 66.6667
+                }
+              ]
+            },
+            {
+              "nome": "Lei Nº 14.133/2021 - Licitação - Objetivos e Princípios",
+              "sort_order": 2,
+              "u20_pdf": 33.33,
+              "historico": [
+                {
+                  "acertos": 1,
+                  "quantidade": 3,
+                  "percentual": 33.3333
+                }
+              ]
+            },
+            {
+              "nome": "Lei Nº 14.133/2021 - Princípio da Publicidade/Igualdade",
+              "sort_order": 3,
+              "u20_pdf": 33.33,
+              "historico": [
+                {
+                  "acertos": 1,
+                  "quantidade": 3,
+                  "percentual": 33.3333
+                }
+              ]
+            },
+            {
+              "nome": "Lei Nº 14.133/2021 - Licitação - Fases da Licitação",
+              "sort_order": 4,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Lei Nº 14.133/2021 - Licitação - Fases da Licitação II",
+              "sort_order": 5,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Lei Nº 14.133/2021 - Licitação - Critérios de Julgamento",
+              "sort_order": 6,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Lei Nº 14.133/2021 - Licitação - Julgamento II, Habilitação, Recursos e Homologação",
+              "sort_order": 7,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Lei Nº 14.133/2021 - Modalidades",
+              "sort_order": 8,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Lei Nº 14.133/2021 - Modalidades II",
+              "sort_order": 9,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Lei Nº 14.133/2021 - Modalidades III - Questões",
+              "sort_order": 10,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Lei nº 14.133/2021 - Procedimentos Auxiliares",
+              "sort_order": 11,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Lei nº 14.133/2021 - Procedimentos Auxiliares II",
+              "sort_order": 12,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Lei nº 14.133/2021 - Procedimentos Auxiliares III",
+              "sort_order": 13,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Lei nº 14.133/2021 - Contratação Direta",
+              "sort_order": 14,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Lei nº 14.133/2021 - Contratação Direta II",
+              "sort_order": 15,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Lei nº 14.133/2021 - Contratação Direta III",
+              "sort_order": 16,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Lei nº 14.133/2021 - Contratação Direta IV",
+              "sort_order": 17,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Lei nº 14.133/2021 - Aula Resumo Licitação",
+              "sort_order": 18,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Lei 14.133/2021 - Contratos Administrativos - Introdução",
+              "sort_order": 19,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Lei 14.133/2021 - Contratos Administrativos - Introdução II",
+              "sort_order": 20,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Lei 14.133/2021 - Contratos Administrativos - Características dos Contratos",
+              "sort_order": 21,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Lei 14.133/2021 - Contratos Administrativos - Características dos Contratos II",
+              "sort_order": 22,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Lei 14.133/2021 - Contratos Administrativos - Características dos Contratos III",
+              "sort_order": 23,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Lei 14.133/2021 - Contratos Administrativos - Cláusulas Exorbitantes",
+              "sort_order": 24,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Lei 14.133/2021 - Contratos Administrativos - Cláusulas Exorbitantes II",
+              "sort_order": 25,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Lei 14.133/2021 - Contratos Administrativos - Cláusulas Exorbitantes III",
+              "sort_order": 26,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Lei 14.133/2021 - Contratos Administrativos - Cláusulas Exorbitantes IV",
+              "sort_order": 27,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Lei 14.133/2021 - Contratos Administrativos - Controle nas Contratações e Exercícios",
+              "sort_order": 28,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Lei 14.133/2021 - Aula Resumo - Contratos",
+              "sort_order": 29,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Legislação Administrativa - Lei nº 14.133/2021 - Licitação - Âmbito de Aplicação",
+              "sort_order": 30,
+              "u20_pdf": null,
+              "historico": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nome": "F Administração",
+      "topicos": [
+        {
+          "nome": "Gestão de processos e projetos",
+          "sort_order": 0,
+          "media_pdf": 76.92,
+          "assuntos": [
+            {
+              "nome": "Noções Básicas de ADM Geral",
+              "sort_order": 0,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Processo Administrativo",
+              "sort_order": 1,
+              "u20_pdf": 40.0,
+              "historico": [
+                {
+                  "acertos": 2,
+                  "quantidade": 5,
+                  "percentual": 40.0
+                }
+              ]
+            },
+            {
+              "nome": "Processo Administrativo II",
+              "sort_order": 2,
+              "u20_pdf": 100.0,
+              "historico": [
+                {
+                  "acertos": 1,
+                  "quantidade": 1,
+                  "percentual": 100.0
+                }
+              ]
+            },
+            {
+              "nome": "Processo Administrativo e Matriz de Planejamento Estratégico",
+              "sort_order": 3,
+              "u20_pdf": 100.0,
+              "historico": [
+                {
+                  "acertos": 1,
+                  "quantidade": 1,
+                  "percentual": 100.0
+                }
+              ]
+            },
+            {
+              "nome": "Processo Administrativo - Matrizes de Planejamento Estratégico e Exercícios",
+              "sort_order": 4,
+              "u20_pdf": 60.0,
+              "historico": [
+                {
+                  "acertos": 3,
+                  "quantidade": 5,
+                  "percentual": 60.0
+                }
+              ]
+            },
+            {
+              "nome": "Exercícios II, Coordenação, Direção e Brainstorming",
+              "sort_order": 5,
+              "u20_pdf": 80.0,
+              "historico": [
+                {
+                  "acertos": 4,
+                  "quantidade": 5,
+                  "percentual": 80.0
+                }
+              ]
+            },
+            {
+              "nome": "Brainstorming e Processo Decisório",
+              "sort_order": 6,
+              "u20_pdf": 66.67,
+              "historico": [
+                {
+                  "acertos": 2,
+                  "quantidade": 3,
+                  "percentual": 66.6667
+                }
+              ]
+            },
+            {
+              "nome": "Processo Decisório II, Benchmarking e Função Organização",
+              "sort_order": 7,
+              "u20_pdf": 100.0,
+              "historico": [
+                {
+                  "acertos": 1,
+                  "quantidade": 1,
+                  "percentual": 100.0
+                }
+              ]
+            },
+            {
+              "nome": "Função Organização, Estruturas Organizacionais",
+              "sort_order": 8,
+              "u20_pdf": 60.0,
+              "historico": [
+                {
+                  "acertos": 3,
+                  "quantidade": 5,
+                  "percentual": 60.0
+                }
+              ]
+            },
+            {
+              "nome": "Função Organização, Estruturas Organizacionais II",
+              "sort_order": 9,
+              "u20_pdf": 80.0,
+              "historico": [
+                {
+                  "acertos": 4,
+                  "quantidade": 5,
+                  "percentual": 80.0
+                }
+              ]
+            },
+            {
+              "nome": "Função Organização, Estruturas Organizacionais III",
+              "sort_order": 10,
+              "u20_pdf": 80.0,
+              "historico": [
+                {
+                  "acertos": 4,
+                  "quantidade": 5,
+                  "percentual": 80.0
+                }
+              ]
+            },
+            {
+              "nome": "Função Organização, Estruturas Organizacionais IV",
+              "sort_order": 11,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Função Organização, Estruturas Organizacionais V",
+              "sort_order": 12,
+              "u20_pdf": 66.67,
+              "historico": [
+                {
+                  "acertos": 2,
+                  "quantidade": 3,
+                  "percentual": 66.6667
+                }
+              ]
+            },
+            {
+              "nome": "Fluxograma, Funcionograma e Lotacionograma",
+              "sort_order": 13,
+              "u20_pdf": 66.67,
+              "historico": [
+                {
+                  "acertos": 2,
+                  "quantidade": 3,
+                  "percentual": 66.6667
+                }
+              ]
+            },
+            {
+              "nome": "Exercícios de Revisão",
+              "sort_order": 14,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Comunicação Organizacional",
+              "sort_order": 15,
+              "u20_pdf": 100.0,
+              "historico": [
+                {
+                  "acertos": 1,
+                  "quantidade": 1,
+                  "percentual": 100.0
+                }
+              ]
+            },
+            {
+              "nome": "Comunicação Organizacional II",
+              "sort_order": 16,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Comunicação organizacional III",
+              "sort_order": 17,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Gestão de Processos",
+              "sort_order": 18,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Gestão de Processos II",
+              "sort_order": 19,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Gestão de Processos II",
+              "sort_order": 20,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Noções de estatística aplicada ao controle e à melhoria de processos",
+              "sort_order": 21,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Business Process Management (BPM)",
+              "sort_order": 22,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Gestão de Projetos",
+              "sort_order": 23,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Gestão de Projetos II",
+              "sort_order": 24,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Gestão de Projetos III",
+              "sort_order": 25,
+              "u20_pdf": null,
+              "historico": []
+            }
+          ]
+        },
+        {
+          "nome": "Gestão de Pessoas",
+          "sort_order": 1,
+          "media_pdf": null,
+          "assuntos": [
+            {
+              "nome": "Comportamento, mediação e comunicação organizacional",
+              "sort_order": 0,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Comportamento, mediação e comunicação organizacional II",
+              "sort_order": 1,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Introdução, Planejamento de RH, processos de Provisão e Aplicar Pessoas 04 Introdução, Processos de Recompensar, Desenvolver, Manter e Monitorar Pessoas; Treinamento, Desenvolvimento e Educação à Distância",
+              "sort_order": 2,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Educação Corporativa, Aprendizagem Organizacional e Espiral do Conhecimento",
+              "sort_order": 4,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Gestão de Cargos e Técnicas de Avaliação de Desempenho",
+              "sort_order": 5,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Erros na Avaliação de Desempenho e Gestão de Desempenho - AV. 360 e Mapeamento de Competências",
+              "sort_order": 6,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Gestão por Competências e Resultados da Gestão de Desempenho 09 Governança no Processo de Gestão de Desempenho, Instrumentos e Ferramentas de Alinhamento e Planejamento das Necessidades de Pessoal",
+              "sort_order": 7,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Planejamento das Necessidades de Pessoal, Engajamento, Indicadores de RH",
+              "sort_order": 9,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Avaliação de Cargos, Pesquisa Salarial, Hierarquização de Cargos e Estratégias de Desenvolvimento de Carreiras",
+              "sort_order": 10,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Avaliação de Cargos, Pesquisa Salarial, Hierarquização de Cargos e Estratégias de Desenvolvimento de Carreiras II",
+              "sort_order": 11,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Teorias de Liderança e Teorias de Motivação 14 Endomarketing, Gestão de Benefícios Diretos e Indiretos, Reconhecimento Não Pecuniário e Contrato de Intermediação de Estágios",
+              "sort_order": 12,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Gestão de Pessoas - Recrutamento",
+              "sort_order": 14,
+              "u20_pdf": null,
+              "historico": []
+            },
+            {
+              "nome": "Gestão de Pessoas - Seleção",
+              "sort_order": 15,
+              "u20_pdf": null,
+              "historico": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -523,6 +523,22 @@ h2 {
   gap: 0.65rem;
 }
 
+.import-box {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  align-items: flex-start;
+}
+
+.import-box h3 {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 650;
+}
+
 .empty-panel {
   max-width: 34rem;
   margin: 2rem auto;
