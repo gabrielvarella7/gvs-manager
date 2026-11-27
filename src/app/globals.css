@@ -1,24 +1,27 @@
 @import "tailwindcss";
 
 :root {
-  /* Branco + verde + grená (vibe bandeira italiana) */
-  --bg: #f5f7f4;
+  /* Verde predominante + branco detalhes + grená (Itália invertida) */
+  --bg: #0c6b38;
+  --bg-deep: #08512a;
   --bg-elev: #ffffff;
   --bg-block: #ffffff;
-  --bg-row: #eef2ee;
-  --line: #c9d4cb;
-  --line-soft: #e2e8e2;
-  --text: #172019;
-  --muted: #5a685e;
-  --accent: #0b7a3a;
-  --grenat: #7a1830;
+  --bg-row: #eef4ef;
+  --line: rgba(255, 255, 255, 0.28);
+  --line-soft: #d7e4db;
+  --text: #f3faf5;
+  --muted: #c5dbc9;
+  --ink: #172019;
+  --ink-muted: #5a685e;
+  --accent: #ffffff;
+  --grenat: #9a2038;
   --ok: #1a8f45;
-  --ok-dim: rgba(26, 143, 69, 0.12);
+  --ok-dim: rgba(26, 143, 69, 0.14);
   --low: #c85a5a;
-  --low-dim: rgba(200, 90, 90, 0.12);
+  --low-dim: rgba(200, 90, 90, 0.14);
   --danger: #7a1830;
-  --focus: #0b7a3a;
-  --shadow: 0 1px 2px rgba(23, 32, 25, 0.05), 0 0 0 1px var(--line-soft);
+  --focus: #ffffff;
+  --shadow: 0 2px 8px rgba(4, 40, 20, 0.18), 0 0 0 1px rgba(255, 255, 255, 0.08);
   --font-sans: var(--font-dm-sans), "Segoe UI", sans-serif;
   --font-mono: var(--font-ibm-plex-mono), ui-monospace, monospace;
   --radius: 4px;
@@ -43,9 +46,9 @@ body {
   color: var(--text);
   font-family: var(--font-sans);
   background:
-    radial-gradient(900px 480px at 0% -5%, rgba(11, 122, 58, 0.1) 0%, transparent 55%),
-    radial-gradient(800px 420px at 100% 0%, rgba(122, 24, 48, 0.08) 0%, transparent 50%),
-    linear-gradient(180deg, #ffffff 0%, var(--bg) 45%, #eef3ee 100%);
+    radial-gradient(900px 520px at 8% -8%, rgba(255, 255, 255, 0.14) 0%, transparent 50%),
+    radial-gradient(800px 460px at 100% 0%, rgba(154, 32, 56, 0.22) 0%, transparent 48%),
+    linear-gradient(180deg, #128047 0%, var(--bg) 42%, var(--bg-deep) 100%);
   background-attachment: fixed;
 }
 
@@ -73,15 +76,15 @@ select {
   position: sticky;
   top: 0;
   z-index: 20;
-  backdrop-filter: blur(10px);
-  background: color-mix(in srgb, var(--bg) 82%, transparent);
+  backdrop-filter: blur(12px);
+  background: color-mix(in srgb, var(--bg-deep) 72%, transparent);
 }
 
 .brand-block {
   min-width: 7rem;
   padding-bottom: 0.2rem;
   border-bottom: 3px solid transparent;
-  border-image: linear-gradient(90deg, var(--accent) 0 33%, #fff 33% 66%, var(--grenat) 66% 100%) 1;
+  border-image: linear-gradient(90deg, #fff 0 33%, var(--grenat) 33% 66%, #fff 66% 100%) 1;
 }
 
 .brand {
@@ -89,11 +92,11 @@ select {
   font-weight: 700;
   letter-spacing: 0.04em;
   line-height: 1.1;
-  color: var(--accent);
+  color: #fff;
 }
 
 .brand-pulse {
-  color: var(--grenat);
+  color: #ffd6de;
   letter-spacing: 0.02em;
 }
 
@@ -124,9 +127,9 @@ select {
 }
 
 .tab.on {
-  color: var(--accent);
-  border-color: color-mix(in srgb, var(--accent) 35%, var(--line));
-  background: color-mix(in srgb, var(--ok-dim) 70%, #fff);
+  color: var(--bg-deep);
+  border-color: #fff;
+  background: #fff;
   font-weight: 600;
 }
 
@@ -138,8 +141,9 @@ select {
 }
 
 .profile-select {
-  background: var(--bg-elev);
-  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--ink);
+  border: 1px solid rgba(255, 255, 255, 0.55);
   border-radius: var(--radius);
   padding: 0.35rem 0.5rem;
   max-width: 14rem;
@@ -218,8 +222,9 @@ h2 {
 }
 
 .btn {
-  background: var(--bg-elev);
-  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--ink);
+  border: 1px solid rgba(255, 255, 255, 0.7);
   border-radius: var(--radius);
   padding: 0.4rem 0.7rem;
   cursor: pointer;
@@ -227,23 +232,26 @@ h2 {
 }
 
 .btn:hover {
-  border-color: var(--focus);
+  border-color: #fff;
+  background: #fff;
 }
 
 .btn.primary {
-  background: color-mix(in srgb, var(--ok) 14%, #fff);
-  border-color: color-mix(in srgb, var(--ok) 45%, var(--line));
-  color: #0a5c30;
+  background: #fff;
+  border-color: #fff;
+  color: var(--bg-deep);
   font-weight: 600;
 }
 
 .btn.ghost {
   background: transparent;
+  color: inherit;
+  border-color: color-mix(in srgb, currentColor 28%, transparent);
 }
 
 .btn.danger {
   color: var(--danger);
-  border-color: color-mix(in srgb, var(--danger) 40%, var(--line));
+  border-color: color-mix(in srgb, var(--danger) 40%, #ccc);
   background: transparent;
 }
 
@@ -251,14 +259,14 @@ h2 {
   background: none;
   border: none;
   padding: 0;
-  color: var(--text);
+  color: var(--ink);
   cursor: pointer;
   text-align: left;
   font-weight: 600;
 }
 
 .linkish:hover {
-  color: var(--accent);
+  color: var(--bg);
 }
 
 .back {
@@ -279,11 +287,40 @@ h2 {
 .materia-block,
 .panel,
 .struct-block,
-.assunto-row {
+.assunto-row,
+.topico-card {
   background: var(--bg-block);
-  border: 1px solid var(--line-soft);
+  color: var(--ink);
+  border: 1px solid rgba(255, 255, 255, 0.55);
   box-shadow: var(--shadow);
   border-radius: 6px;
+}
+
+.materia-block .muted,
+.panel .muted,
+.struct-block .muted,
+.assunto-row .muted,
+.topico-card .muted,
+.materia-block .linkish,
+.assunto-row .btn,
+.topico-card .btn {
+  color: var(--ink-muted);
+}
+
+.assunto-row .btn.ghost,
+.topico-card .btn.ghost,
+.assunto-row .btn.primary,
+.topico-card .btn.primary {
+  color: var(--bg-deep);
+  border-color: color-mix(in srgb, var(--bg) 35%, #ccc);
+  background: color-mix(in srgb, var(--ok-dim) 50%, #fff);
+}
+
+.assunto-row .btn.primary,
+.topico-card .btn.primary {
+  background: color-mix(in srgb, var(--ok) 16%, #fff);
+  border-color: color-mix(in srgb, var(--ok) 40%, #bbb);
+  color: #0a5c30;
 }
 
 .materia-block {
@@ -319,7 +356,7 @@ h2 {
   gap: 0.1rem;
   font-size: 0.65rem;
   letter-spacing: 0.08em;
-  color: var(--muted);
+  color: var(--ink-muted);
 }
 
 .topic-list {
@@ -448,7 +485,7 @@ h2 {
   gap: 0.15rem;
   font-size: 0.65rem;
   letter-spacing: 0.08em;
-  color: var(--muted);
+  color: var(--ink-muted);
 }
 
 .recentes {
@@ -466,6 +503,7 @@ h2 {
   border: 1px solid var(--line-soft);
   border-radius: var(--radius);
   padding: 0.2rem 0.25rem 0.2rem 0.4rem;
+  color: var(--ink);
 }
 
 .chip-meta {
@@ -493,7 +531,7 @@ h2 {
 
 .entry-inline-label {
   font-size: 0.8rem;
-  color: var(--muted);
+  color: var(--ink-muted);
   letter-spacing: 0.02em;
   white-space: nowrap;
 }
@@ -503,14 +541,15 @@ h2 {
   align-items: center;
   gap: 0.28rem;
   font-size: 0.78rem;
-  color: var(--muted);
+  color: var(--ink-muted);
   letter-spacing: 0.02em;
 }
 
 .entry-inline-field input {
   width: 3.1rem;
-  background: var(--bg);
-  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--ink);
+  border: 1px solid var(--line-soft);
   border-radius: var(--radius);
   padding: 0.28rem 0.35rem;
   font-family: var(--font-mono);
@@ -560,16 +599,12 @@ h2 {
 }
 
 .topico-card {
-  background: var(--bg-block);
-  border: 1px solid var(--line-soft);
-  box-shadow: var(--shadow);
-  border-radius: 6px;
   padding: 0.65rem 0.75rem;
   animation: block-in 240ms ease both;
 }
 
 .topico-card.open {
-  border-color: color-mix(in srgb, var(--focus) 35%, var(--line-soft));
+  border-color: color-mix(in srgb, var(--grenat) 45%, #fff);
 }
 
 .topico-card-head {
