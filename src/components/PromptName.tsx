@@ -18,11 +18,13 @@ export function ConfirmButton({
   confirm,
   onConfirm,
   className,
+  title,
 }: {
   label: string;
   confirm: string;
   onConfirm: () => void | Promise<void>;
   className?: string;
+  title?: string;
 }) {
   const [busy, setBusy] = useState(false);
   return (
@@ -30,6 +32,8 @@ export function ConfirmButton({
       type="button"
       className={className}
       disabled={busy}
+      title={title ?? label}
+      aria-label={title ?? label}
       onClick={async () => {
         if (!window.confirm(confirm)) return;
         setBusy(true);
