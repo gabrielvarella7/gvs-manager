@@ -472,7 +472,7 @@ h2 {
 }
 
 .entry-inline-label {
-  font-size: 0.72rem;
+  font-size: 0.78rem;
   color: var(--muted);
   letter-spacing: 0.02em;
   white-space: nowrap;
@@ -482,7 +482,7 @@ h2 {
   display: inline-flex;
   align-items: center;
   gap: 0.28rem;
-  font-size: 0.68rem;
+  font-size: 0.74rem;
   color: var(--muted);
   letter-spacing: 0.04em;
   text-transform: lowercase;
