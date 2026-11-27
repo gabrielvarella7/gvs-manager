@@ -28,6 +28,22 @@ export function GvsApp() {
     setProfiles(p.profiles);
     setActiveId(p.activeProfileId);
     setViewer(p.viewer);
+
+    // One-shot: if CREMERJ exists and PDF data not yet imported, import into that profile only.
+    const cremerj = p.profiles.find((x) =>
+      `${x.nome} ${x.concurso} ${x.identificacao}`.toLowerCase().includes("cremerj"),
+    );
+    if (cremerj) {
+      try {
+        const status = await api.importCremerjStatus();
+        if (status.profile && !status.imported) {
+          await api.importCremerj({ profileId: cremerj.id });
+        }
+      } catch {
+        // Import is best-effort on load; manual button remains on Perfis.
+      }
+    }
+
     if (p.activeProfileId) {
       const t = await api.tree(p.activeProfileId);
       setTree(t);
@@ -609,6 +625,36 @@ function PerfisView({
     concurso: "",
     cargo: "",
   });
+  const [importInfo, setImportInfo] = useState<string | null>(null);
+  const [importBusy, setImportBusy] = useState(false);
+
+  const cremerj = profiles.find((p) =>
+    `${p.nome} ${p.concurso} ${p.identificacao}`.toLowerCase().includes("cremerj"),
+  );
+
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      try {
+        const s = await api.importCremerjStatus();
+        if (cancelled) return;
+        if (!s.profile) {
+          setImportInfo(null);
+          return;
+        }
+        setImportInfo(
+          s.imported
+            ? `PDF CREMERJ já importado${s.importedAt ? ` (${new Date(s.importedAt).toLocaleString("pt-BR")})` : ""}.`
+            : "Há dados da planilha PDF prontos para importar neste perfil.",
+        );
+      } catch {
+        if (!cancelled) setImportInfo(null);
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [profiles]);
 
   return (
     <section className="perfis">
@@ -684,6 +730,42 @@ function PerfisView({
               ))}
             </ul>
           )}
+          {cremerj ? (
+            <div className="import-box">
+              <h3>Importar planilha PDF (CREMERJ)</h3>
+              <p className="muted dense">
+                Preenche tópicos, assuntos e scores do PDF no perfil{" "}
+                <strong>{cremerj.nome}</strong>
+                {cremerj.concurso ? ` · ${cremerj.concurso}` : ""}. Idempotente — não apaga outros
+                perfis nem sobrescreve histórico já existente.
+              </p>
+              {importInfo ? <p className="muted dense">{importInfo}</p> : null}
+              <button
+                type="button"
+                className="btn primary"
+                disabled={importBusy}
+                onClick={() =>
+                  run(async () => {
+                    setImportBusy(true);
+                    try {
+                      const r = await api.importCremerj({ profileId: cremerj.id });
+                      if (r.alreadyImported) {
+                        setImportInfo("PDF CREMERJ já estava importado (nada alterado).");
+                        return;
+                      }
+                      setImportInfo(
+                        `Importado: +${r.created.topicos} tópicos, +${r.created.assuntos} assuntos, +${r.created.historico} entradas de histórico.`,
+                      );
+                    } finally {
+                      setImportBusy(false);
+                    }
+                  })
+                }
+              >
+                {importBusy ? "Importando…" : "Importar dados do PDF"}
+              </button>
+            </div>
+          ) : null}
         </div>
         <form
           className="panel form-panel"

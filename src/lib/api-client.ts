@@ -65,4 +65,33 @@ export const api = {
       method: "POST",
       body: JSON.stringify({ assuntoId, acertos, quantidade }),
     }),
+  importCremerjStatus: () =>
+    req<{
+      profile: { id: string; nome: string; concurso: string } | null;
+      imported: boolean;
+      importedAt: string | null;
+    }>("/api/import/cremerj"),
+  importCremerj: (body?: { profileId?: string; force?: boolean }) =>
+    req<{
+      ok: boolean;
+      profileId: string;
+      alreadyImported: boolean;
+      created: {
+        materias: number;
+        topicos: number;
+        assuntos: number;
+        historico: number;
+      };
+      reused: {
+        materias: number;
+        topicos: number;
+        assuntos: number;
+        historicoSkipped: number;
+      };
+      gaps: string[];
+      sourceStats: Record<string, number>;
+    }>("/api/import/cremerj", {
+      method: "POST",
+      body: JSON.stringify(body ?? {}),
+    }),
 };
