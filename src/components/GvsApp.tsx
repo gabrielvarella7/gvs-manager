@@ -380,12 +380,13 @@ function DetailView({
                   className="entry-form"
                   onSubmit={(e) => {
                     e.preventDefault();
-                    const fd = new FormData(e.currentTarget);
+                    const form = e.currentTarget;
+                    const fd = new FormData(form);
                     const acertos = Number(fd.get("acertos"));
                     const quantidade = Number(fd.get("quantidade"));
                     run(async () => {
                       await api.addHistorico(a.id, acertos, quantidade);
-                      e.currentTarget.reset();
+                      form.reset();
                     });
                   }}
                 >
