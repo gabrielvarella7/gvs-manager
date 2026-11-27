@@ -15,6 +15,11 @@ function materiaTabLabel(nome: string): string {
   return nome;
 }
 
+/** Prefixo visual `N- `; o nome persistido fica sem número. */
+function assuntoLabel(ordem: number, nome: string): string {
+  return `${ordem}- ${nome}`;
+}
+
 type NavTab =
   | { kind: "resumo" }
   | { kind: "materia"; materiaId: string }
@@ -508,8 +513,13 @@ function MateriaTabView({
                     ) : (
                       <>
                         <div className="assunto-list">
-                          {shown.map((a) => (
-                            <AssuntoCard key={a.id} assunto={a} run={run} />
+                          {shown.map((a, i) => (
+                            <AssuntoCard
+                              key={a.id}
+                              assunto={a}
+                              ordem={i + 1}
+                              run={run}
+                            />
                           ))}
                         </div>
                         <div className="topico-expand-actions">
@@ -545,16 +555,19 @@ function MateriaTabView({
 
 function AssuntoCard({
   assunto,
+  ordem,
   run,
 }: {
   assunto: AssuntoNode;
+  ordem: number;
   run: RunFn;
 }) {
+  const display = assuntoLabel(ordem, assunto.nome);
   return (
     <article className="assunto-row">
       <div className="assunto-main">
         <div className="assunto-title-line">
-          <div className="assunto-title">{assunto.nome}</div>
+          <div className="assunto-title">{display}</div>
           <button
             type="button"
             className="btn ghost btn-renomear"
@@ -779,9 +792,9 @@ function EstruturaView({
                 </div>
               </div>
               <ul className="struct-assuntos">
-                {t.assuntos.map((a) => (
+                {t.assuntos.map((a, i) => (
                   <li key={a.id} className="struct-row nested">
-                    <span>{a.nome}</span>
+                    <span>{assuntoLabel(i + 1, a.nome)}</span>
                     <div className="row-actions">
                       <button
                         type="button"
