@@ -1,9 +1,10 @@
 @import "tailwindcss";
 
 :root {
-  /* Verde luxuoso predominante + branco detalhes + grená (Itália invertida) */
-  --bg: #0a3f28;
-  --bg-deep: #052417;
+  /* Um único verde luxuoso em toda a UI; branco detalhes + grená */
+  --green: #0a3f28;
+  --bg: var(--green);
+  --bg-deep: var(--green);
   --bg-elev: #ffffff;
   --bg-block: #ffffff;
   --bg-row: #eef3ef;
@@ -14,12 +15,12 @@
   --ink: #121a15;
   --ink-muted: #4e5c54;
   --accent: #ffffff;
-  --grenat: #9a2038;
+  --grenat: #6e1a2c;
   --ok: #146b38;
   --ok-dim: rgba(20, 107, 56, 0.14);
-  --low: #c85a5a;
-  --low-dim: rgba(200, 90, 90, 0.14);
-  --danger: #7a1830;
+  --low: var(--grenat);
+  --low-dim: rgba(110, 26, 44, 0.16);
+  --danger: #541320;
   --focus: #ffffff;
   --shadow: 0 3px 14px rgba(2, 22, 12, 0.32), 0 0 0 1px rgba(255, 255, 255, 0.06);
   --font-sans: var(--font-dm-sans), "Segoe UI", sans-serif;
@@ -45,11 +46,7 @@ body {
   margin: 0;
   color: var(--text);
   font-family: var(--font-sans);
-  background:
-    radial-gradient(900px 520px at 8% -8%, rgba(255, 255, 255, 0.08) 0%, transparent 52%),
-    radial-gradient(820px 480px at 100% 0%, rgba(154, 32, 56, 0.28) 0%, transparent 50%),
-    linear-gradient(180deg, #0e5333 0%, var(--bg) 40%, var(--bg-deep) 100%);
-  background-attachment: fixed;
+  background: var(--green);
 }
 
 button,
@@ -76,8 +73,7 @@ select {
   position: sticky;
   top: 0;
   z-index: 20;
-  backdrop-filter: blur(12px);
-  background: color-mix(in srgb, var(--bg-deep) 72%, transparent);
+  background: var(--green);
 }
 
 .brand-block {
@@ -96,7 +92,8 @@ select {
 }
 
 .brand-pulse {
-  color: #ffd6de;
+  /* warm lighten of --grenat — wine, not mauve/pink */
+  color: color-mix(in srgb, var(--grenat) 78%, #fff0ee);
   letter-spacing: 0.02em;
 }
 
@@ -127,7 +124,7 @@ select {
 }
 
 .tab.on {
-  color: var(--bg-deep);
+  color: var(--green);
   border-color: #fff;
   background: #fff;
   font-weight: 600;
@@ -239,7 +236,7 @@ h2 {
 .btn.primary {
   background: #fff;
   border-color: #fff;
-  color: var(--bg-deep);
+  color: var(--green);
   font-weight: 600;
 }
 
@@ -323,8 +320,8 @@ h2 {
 .assunto-row .btn.ghost,
 .topico-card .btn.ghost,
 .struct-block .btn.ghost {
-  color: var(--bg-deep);
-  border-color: color-mix(in srgb, var(--bg) 35%, #ccc);
+  color: var(--green);
+  border-color: color-mix(in srgb, var(--green) 35%, #ccc);
   background: color-mix(in srgb, var(--ok-dim) 50%, #fff);
 }
 
@@ -333,7 +330,7 @@ h2 {
 .struct-block .btn.primary {
   background: color-mix(in srgb, var(--ok) 16%, #fff);
   border-color: color-mix(in srgb, var(--ok) 40%, #bbb);
-  color: #0a5c30;
+  color: var(--green);
 }
 
 .assunto-row .btn.danger,
@@ -346,9 +343,9 @@ h2 {
 }
 
 .page-head .btn.danger {
-  color: #ffe4e9;
-  border-color: color-mix(in srgb, var(--grenat) 50%, #fff);
-  background: color-mix(in srgb, var(--grenat) 38%, transparent);
+  color: #e2c4c9;
+  border-color: color-mix(in srgb, var(--grenat) 55%, #fff);
+  background: color-mix(in srgb, var(--grenat) 42%, transparent);
 }
 
 .page-head .btn.ghost {
