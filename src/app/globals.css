@@ -1,22 +1,24 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #0b0f0e;
-  --bg-elev: #121916;
-  --bg-block: #151d19;
-  --bg-row: #1a2320;
-  --line: #2a3631;
-  --line-soft: #1f2925;
-  --text: #e7eee9;
-  --muted: #8fa098;
-  --accent: #c8d9b8;
-  --ok: #3ecf7a;
-  --ok-dim: rgba(62, 207, 122, 0.14);
-  --low: #f0a0a0;
-  --low-dim: rgba(240, 160, 160, 0.14);
-  --danger: #d97777;
-  --focus: #7eb08a;
-  --shadow: 0 0 0 1px var(--line-soft);
+  /* Branco + verde + grená (vibe bandeira italiana) */
+  --bg: #f5f7f4;
+  --bg-elev: #ffffff;
+  --bg-block: #ffffff;
+  --bg-row: #eef2ee;
+  --line: #c9d4cb;
+  --line-soft: #e2e8e2;
+  --text: #172019;
+  --muted: #5a685e;
+  --accent: #0b7a3a;
+  --grenat: #7a1830;
+  --ok: #1a8f45;
+  --ok-dim: rgba(26, 143, 69, 0.12);
+  --low: #c85a5a;
+  --low-dim: rgba(200, 90, 90, 0.12);
+  --danger: #7a1830;
+  --focus: #0b7a3a;
+  --shadow: 0 1px 2px rgba(23, 32, 25, 0.05), 0 0 0 1px var(--line-soft);
   --font-sans: var(--font-dm-sans), "Segoe UI", sans-serif;
   --font-mono: var(--font-ibm-plex-mono), ui-monospace, monospace;
   --radius: 4px;
@@ -41,9 +43,9 @@ body {
   color: var(--text);
   font-family: var(--font-sans);
   background:
-    radial-gradient(1200px 600px at 10% -10%, #15221c 0%, transparent 55%),
-    radial-gradient(900px 500px at 100% 0%, #1a1512 0%, transparent 45%),
-    linear-gradient(180deg, #0d1210 0%, var(--bg) 40%, #0a0e0c 100%);
+    radial-gradient(900px 480px at 0% -5%, rgba(11, 122, 58, 0.1) 0%, transparent 55%),
+    radial-gradient(800px 420px at 100% 0%, rgba(122, 24, 48, 0.08) 0%, transparent 50%),
+    linear-gradient(180deg, #ffffff 0%, var(--bg) 45%, #eef3ee 100%);
   background-attachment: fixed;
 }
 
@@ -77,22 +79,30 @@ select {
 
 .brand-block {
   min-width: 7rem;
+  padding-bottom: 0.2rem;
+  border-bottom: 3px solid transparent;
+  border-image: linear-gradient(90deg, var(--accent) 0 33%, #fff 33% 66%, var(--grenat) 66% 100%) 1;
 }
 
 .brand {
-  font-size: 1.85rem;
+  font-size: 1.55rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
-  line-height: 1;
+  letter-spacing: 0.04em;
+  line-height: 1.1;
   color: var(--accent);
 }
 
+.brand-pulse {
+  color: var(--grenat);
+  letter-spacing: 0.02em;
+}
+
 .brand-sub {
-  font-size: 0.72rem;
-  letter-spacing: 0.14em;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--muted);
-  margin-top: 0.2rem;
+  margin-top: 0.25rem;
 }
 
 .tabs {
@@ -114,9 +124,10 @@ select {
 }
 
 .tab.on {
-  color: var(--text);
-  border-color: var(--line);
-  background: var(--bg-elev);
+  color: var(--accent);
+  border-color: color-mix(in srgb, var(--accent) 35%, var(--line));
+  background: color-mix(in srgb, var(--ok-dim) 70%, #fff);
+  font-weight: 600;
 }
 
 .top-meta {
@@ -220,9 +231,10 @@ h2 {
 }
 
 .btn.primary {
-  background: color-mix(in srgb, var(--ok) 18%, var(--bg-elev));
+  background: color-mix(in srgb, var(--ok) 14%, #fff);
   border-color: color-mix(in srgb, var(--ok) 45%, var(--line));
-  color: #d9ffe8;
+  color: #0a5c30;
+  font-weight: 600;
 }
 
 .btn.ghost {
@@ -268,7 +280,7 @@ h2 {
 .panel,
 .struct-block,
 .assunto-row {
-  background: linear-gradient(180deg, var(--bg-block), color-mix(in srgb, var(--bg-block) 85%, #0a0e0c));
+  background: var(--bg-block);
   border: 1px solid var(--line-soft);
   box-shadow: var(--shadow);
   border-radius: 6px;
@@ -548,7 +560,7 @@ h2 {
 }
 
 .topico-card {
-  background: linear-gradient(180deg, var(--bg-block), color-mix(in srgb, var(--bg-block) 85%, #0a0e0c));
+  background: var(--bg-block);
   border: 1px solid var(--line-soft);
   box-shadow: var(--shadow);
   border-radius: 6px;

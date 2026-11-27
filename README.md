@@ -1,4 +1,4 @@
-# GVS Score Manager
+# GVS ScorePulse
 
 App web (PT-BR) para acompanhar acertos e desempenho em estudos para concursos: **matéria → tópico → assunto**, histórico de exercícios e **ACUMULADO U20**.
 

@@ -27,5 +27,5 @@
     "tailwindcss": "4.3.3",
     "typescript": "^5"
   },
-  "description": "GVS Score Manager — acompanhamento de acertos para concursos"
+  "description": "GVS ScorePulse — acompanhamento de acertos para concursos"
 }
