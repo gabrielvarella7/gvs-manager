@@ -553,32 +553,6 @@ function AssuntoCard({
       <div className="assunto-main">
         <div className="assunto-head-left">
           <div className="assunto-title">{assunto.nome}</div>
-          <div className="row-actions assunto-crud">
-            <button
-              type="button"
-              className="btn ghost"
-              onClick={() => {
-                void (async () => {
-                  const previous = assunto.nome;
-                  const nome = await promptName(`Renomear assunto (${previous})`);
-                  if (!nome) return;
-                  await run(
-                    async () => {
-                      await api.renameAssunto(assunto.id, nome);
-                    },
-                    {
-                      label: `renomear “${previous}”`,
-                      undo: async () => {
-                        await api.renameAssunto(assunto.id, previous);
-                      },
-                    },
-                  );
-                })();
-              }}
-            >
-              Renomear
-            </button>
-          </div>
         </div>
         <div className="assunto-side">
           <ConfirmButton
@@ -596,6 +570,71 @@ function AssuntoCard({
           </div>
         </div>
       </div>
+
+      <div className="assunto-toolbar">
+        <button
+          type="button"
+          className="btn ghost"
+          onClick={() => {
+            void (async () => {
+              const previous = assunto.nome;
+              const nome = await promptName(`Renomear assunto (${previous})`);
+              if (!nome) return;
+              await run(
+                async () => {
+                  await api.renameAssunto(assunto.id, nome);
+                },
+                {
+                  label: `renomear “${previous}”`,
+                  undo: async () => {
+                    await api.renameAssunto(assunto.id, previous);
+                  },
+                },
+              );
+            })();
+          }}
+        >
+          Renomear
+        </button>
+        <form
+          className="entry-form-inline"
+          onSubmit={(e) => {
+            e.preventDefault();
+            const form = e.currentTarget;
+            const fd = new FormData(form);
+            const acertos = Number(fd.get("acertos"));
+            const quantidade = Number(fd.get("quantidade"));
+            run(
+              async () => {
+                const { entry } = await api.addHistorico(assunto.id, acertos, quantidade);
+                form.reset();
+                (form as HTMLFormElement & { __lastEntryId?: string }).__lastEntryId = entry.id;
+              },
+              {
+                label: `registrar ${acertos}/${quantidade}`,
+                undo: async () => {
+                  const id = (form as HTMLFormElement & { __lastEntryId?: string }).__lastEntryId;
+                  if (id) await api.deleteHistorico(id);
+                },
+              },
+            );
+          }}
+        >
+          <span className="entry-inline-label">registrar novo bloco:</span>
+          <label className="entry-inline-field">
+            <span>acertos</span>
+            <input name="acertos" type="number" min={0} required inputMode="numeric" />
+          </label>
+          <label className="entry-inline-field">
+            <span>total</span>
+            <input name="quantidade" type="number" min={1} required inputMode="numeric" />
+          </label>
+          <button type="submit" className="btn primary">
+            Registrar
+          </button>
+        </form>
+      </div>
+
       <div className="recentes">
         {assunto.recentes.length === 0 ? (
           <span className="muted">Sem histórico</span>
@@ -629,43 +668,6 @@ function AssuntoCard({
           ))
         )}
       </div>
-      <form
-        className="entry-form"
-        onSubmit={(e) => {
-          e.preventDefault();
-          const form = e.currentTarget;
-          const fd = new FormData(form);
-          const acertos = Number(fd.get("acertos"));
-          const quantidade = Number(fd.get("quantidade"));
-          run(
-            async () => {
-              const { entry } = await api.addHistorico(assunto.id, acertos, quantidade);
-              form.reset();
-              // stash entry id on form dataset for undo registration after run completes
-              (form as HTMLFormElement & { __lastEntryId?: string }).__lastEntryId = entry.id;
-            },
-            {
-              label: `registrar ${acertos}/${quantidade}`,
-              undo: async () => {
-                const id = (form as HTMLFormElement & { __lastEntryId?: string }).__lastEntryId;
-                if (id) await api.deleteHistorico(id);
-              },
-            },
-          );
-        }}
-      >
-        <label>
-          Acertos
-          <input name="acertos" type="number" min={0} required inputMode="numeric" />
-        </label>
-        <label>
-          Questões
-          <input name="quantidade" type="number" min={1} required inputMode="numeric" />
-        </label>
-        <button type="submit" className="btn primary">
-          Registrar
-        </button>
-      </form>
     </article>
   );
 }
