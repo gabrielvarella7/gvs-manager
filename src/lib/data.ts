@@ -1,6 +1,7 @@
 import { sql } from "./db";
 import { acumuladoU20, mediaSimples } from "./calc";
 import {
+  MATERIA_RENAMES,
   SEED_MATERIAS,
   type AssuntoNode,
   type HistoricoEntry,
@@ -11,6 +12,21 @@ import {
 } from "./types";
 
 type Owner = { sub: string; stage: string };
+
+/** Renomeia matérias legadas no perfil (ex.: D Administrativo → Direito Administrativo). */
+export async function applyMateriaRenames(profileId: string): Promise<void> {
+  for (const [from, to] of Object.entries(MATERIA_RENAMES)) {
+    await sql(
+      `update materias set nome = $3
+       where profile_id = $1 and lower(nome) = lower($2)
+         and not exists (
+           select 1 from materias m2
+           where m2.profile_id = $1 and lower(m2.nome) = lower($3)
+         )`,
+      [profileId, from, to],
+    );
+  }
+}
 
 export async function listProfiles(owner: Owner): Promise<Profile[]> {
   return sql<Profile>(
@@ -383,6 +399,8 @@ export async function loadTree(
 ): Promise<TreePayload | null> {
   const profile = await getOwnedProfile(owner, profileId);
   if (!profile) return null;
+
+  await applyMateriaRenames(profileId);
 
   const materias = await sql<{ id: string; nome: string; sort_order: number }>(
     `select id, nome, sort_order from materias where profile_id = $1 order by sort_order, created_at`,

@@ -51,6 +51,11 @@ export const SEED_MATERIAS = [
   "Informática",
   "CREMERJ",
   "Constitucional",
-  "D Administrativo",
+  "Direito Administrativo",
   "F Administração",
 ] as const;
+
+/** Nomes antigos → atuais (continuidade de dados já importados). */
+export const MATERIA_RENAMES: Record<string, string> = {
+  "D Administrativo": "Direito Administrativo",
+};

@@ -122,15 +122,38 @@ export async function importCremerjPdf(
   const reused = { materias: 0, topicos: 0, assuntos: 0, historicoSkipped: 0 };
 
   for (const [mi, materia] of payload.materias.entries()) {
-    const existingM = await sql<{ id: string; nome: string }>(
-      `select id, nome from materias
-       where profile_id = $1 and lower(nome) = lower($2)
-       order by sort_order limit 1`,
-      [profileId, materia.nome],
-    );
+    // Aceita nome atual ou legado (ex.: "D Administrativo" ↔ "Direito Administrativo").
+    const nameAliases =
+      materia.nome === "Direito Administrativo"
+        ? ["Direito Administrativo", "D Administrativo"]
+        : materia.nome === "D Administrativo"
+          ? ["Direito Administrativo", "D Administrativo"]
+          : [materia.nome];
+    const canonicalNome =
+      materia.nome === "D Administrativo" ? "Direito Administrativo" : materia.nome;
+
+    let existingM: { id: string; nome: string } | undefined;
+    for (const alias of nameAliases) {
+      const rows = await sql<{ id: string; nome: string }>(
+        `select id, nome from materias
+         where profile_id = $1 and lower(nome) = lower($2)
+         order by sort_order limit 1`,
+        [profileId, alias],
+      );
+      if (rows[0]) {
+        existingM = rows[0];
+        break;
+      }
+    }
     let materiaId: string;
-    if (existingM[0]) {
-      materiaId = existingM[0].id;
+    if (existingM) {
+      materiaId = existingM.id;
+      if (existingM.nome !== canonicalNome) {
+        await sql(`update materias set nome = $2 where id = $1`, [
+          materiaId,
+          canonicalNome,
+        ]);
+      }
       reused.materias += 1;
     } else {
       const max = await sql<{ m: number }>(
@@ -139,7 +162,7 @@ export async function importCremerjPdf(
       );
       const inserted = await sql<{ id: string }>(
         `insert into materias (profile_id, nome, sort_order) values ($1, $2, $3) returning id`,
-        [profileId, materia.nome, Math.max(mi, (max[0]?.m ?? -1) + 1)],
+        [profileId, canonicalNome, Math.max(mi, (max[0]?.m ?? -1) + 1)],
       );
       materiaId = inserted[0].id;
       created.materias += 1;
