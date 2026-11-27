@@ -92,7 +92,8 @@ select {
 }
 
 .brand-pulse {
-  color: #c48a94;
+  /* lighten --grenat without drifting into pink/mauve */
+  color: color-mix(in srgb, var(--grenat) 58%, #f7ecee);
   letter-spacing: 0.02em;
 }
 
