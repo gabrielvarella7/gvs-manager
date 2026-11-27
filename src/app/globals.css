@@ -455,14 +455,49 @@ h2 {
   border-color: color-mix(in srgb, var(--danger) 28%, var(--line-soft));
 }
 
-.entry-form {
-  display: grid;
-  grid-template-columns: 1fr 1fr auto;
-  gap: 0.5rem;
-  align-items: end;
+.assunto-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem 0.65rem;
+  margin: 0.55rem 0 0.15rem;
 }
 
-.entry-form label,
+.entry-form-inline {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.45rem;
+  min-width: 0;
+}
+
+.entry-inline-label {
+  font-size: 0.78rem;
+  color: var(--muted);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.entry-inline-field {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.28rem;
+  font-size: 0.74rem;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+  text-transform: lowercase;
+}
+
+.entry-inline-field input {
+  width: 3.1rem;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 0.28rem 0.35rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+
 .form-panel label {
   display: flex;
   flex-direction: column;
@@ -473,7 +508,6 @@ h2 {
   text-transform: uppercase;
 }
 
-.entry-form input,
 .form-panel input {
   background: var(--bg);
   border: 1px solid var(--line);
@@ -481,7 +515,7 @@ h2 {
   padding: 0.45rem 0.5rem;
 }
 
-.entry-form input:focus,
+.entry-inline-field input:focus,
 .form-panel input:focus,
 .profile-select:focus,
 .btn:focus-visible,
@@ -574,9 +608,6 @@ h2 {
   padding-top: 0.35rem;
 }
 
-.assunto-crud {
-  margin-top: 0.35rem;
-}
 
 .struct-block {
   padding: 0.75rem;
@@ -697,12 +728,12 @@ h2 {
     grid-template-columns: 1fr;
   }
 
-  .entry-form {
-    grid-template-columns: 1fr 1fr;
+  .assunto-toolbar {
+    gap: 0.4rem;
   }
 
-  .entry-form .btn {
-    grid-column: 1 / -1;
+  .entry-form-inline {
+    width: 100%;
   }
 
   .page-head {
