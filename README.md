@@ -1,32 +1,22 @@
-# React + TypeScript + Vite
+# GVS Score Manager
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+App web (PT-BR) para acompanhar acertos e desempenho em estudos para concursos: **matéria → tópico → assunto**, histórico de exercícios e **ACUMULADO U20**.
 
-Currently, two official plugins are available:
+## Como rodar
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `tsrs` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+npm install
+npm run dev
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+Abra [http://localhost:3000](http://localhost:3000). Em desenvolvimento a identidade é simulada (`cursor/identity.dev.ts`) e os dados ficam em PGlite em memória. No app publicado (Cursor), a conta sincroniza via Postgres + identidade Cursor.
+
+## Scripts
+
+- `npm run dev` — desenvolvimento
+- `npm run build` — build + migrate (quando `DATABASE_URL` existir)
+- `npm start` — servidor de produção
+
+## Escopo MVP
+
+Perfis por concurso, CRUD de estrutura (sem placeholders), médias simples (U20 / tópico / matéria) e cores ≥70% verde / &lt;70% vermelho claro.
