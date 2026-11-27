@@ -384,7 +384,7 @@ h2 {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 0.35rem;
+  gap: 0.55rem;
 }
 
 .btn-x {
