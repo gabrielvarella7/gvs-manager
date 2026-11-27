@@ -11,6 +11,7 @@ const ASSUNTOS_PAGE = 10;
 /** Rótulos de aba mais legíveis; o nome na base continua o da matéria. */
 function materiaTabLabel(nome: string): string {
   if (nome === "F Administração") return "Fundamentos da Administração";
+  if (nome === "D Administrativo") return "Direito Administrativo";
   return nome;
 }
 

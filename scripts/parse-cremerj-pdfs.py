@@ -23,7 +23,7 @@ FILE_MAP = [
     ("03_INFO_6a7e", "Informática"),
     ("04_Legs_CREMERJ_61d7", "CREMERJ"),
     ("05_Constitucional_a545", "Constitucional"),
-    ("06_D_Administrativo_6b48", "D Administrativo"),
+    ("06_D_Administrativo_6b48", "Direito Administrativo"),
     ("07_F_Administrac_a_o_5499", "F Administração"),
 ]
 
@@ -32,7 +32,7 @@ STRATEGIES = {
     "Informática": "info",
     "CREMERJ": "cremerj",
     "Constitucional": "constitucional",
-    "D Administrativo": "dadm",
+    "Direito Administrativo": "dadm",
     "F Administração": "f_adm",
 }
 
@@ -333,7 +333,7 @@ def build_materia(materia_name, pages, strategy):
                 }
             )
         nome = t["title"]
-        if materia_name == "D Administrativo":
+        if materia_name == "Direito Administrativo":
             if str(nome).startswith("Lei Nº 14.133") or str(nome).startswith("Lei nº 14.133"):
                 nome = "Licitações e Contratos (Lei 14.133/2021)"
             if t["assuntos"] and t["assuntos"][0]["nome"].startswith("Atos Administrativos"):

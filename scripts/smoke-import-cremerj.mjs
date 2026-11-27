@@ -39,7 +39,7 @@ const seed = [
   "Informática",
   "CREMERJ",
   "Constitucional",
-  "D Administrativo",
+  "Direito Administrativo",
   "F Administração",
 ];
 for (let i = 0; i < seed.length; i++) {
