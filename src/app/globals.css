@@ -1,27 +1,27 @@
 @import "tailwindcss";
 
 :root {
-  /* Verde predominante + branco detalhes + grená (Itália invertida) */
-  --bg: #0c6b38;
-  --bg-deep: #08512a;
+  /* Verde luxuoso predominante + branco detalhes + grená (Itália invertida) */
+  --bg: #0a3f28;
+  --bg-deep: #052417;
   --bg-elev: #ffffff;
   --bg-block: #ffffff;
-  --bg-row: #eef4ef;
-  --line: rgba(255, 255, 255, 0.28);
-  --line-soft: #d7e4db;
-  --text: #f3faf5;
-  --muted: #c5dbc9;
-  --ink: #172019;
-  --ink-muted: #5a685e;
+  --bg-row: #eef3ef;
+  --line: rgba(255, 255, 255, 0.22);
+  --line-soft: #d4e0d7;
+  --text: #f4faf6;
+  --muted: #b7cfc0;
+  --ink: #121a15;
+  --ink-muted: #4e5c54;
   --accent: #ffffff;
   --grenat: #9a2038;
-  --ok: #1a8f45;
-  --ok-dim: rgba(26, 143, 69, 0.14);
+  --ok: #146b38;
+  --ok-dim: rgba(20, 107, 56, 0.14);
   --low: #c85a5a;
   --low-dim: rgba(200, 90, 90, 0.14);
   --danger: #7a1830;
   --focus: #ffffff;
-  --shadow: 0 2px 8px rgba(4, 40, 20, 0.18), 0 0 0 1px rgba(255, 255, 255, 0.08);
+  --shadow: 0 3px 14px rgba(2, 22, 12, 0.32), 0 0 0 1px rgba(255, 255, 255, 0.06);
   --font-sans: var(--font-dm-sans), "Segoe UI", sans-serif;
   --font-mono: var(--font-ibm-plex-mono), ui-monospace, monospace;
   --radius: 4px;
@@ -46,9 +46,9 @@ body {
   color: var(--text);
   font-family: var(--font-sans);
   background:
-    radial-gradient(900px 520px at 8% -8%, rgba(255, 255, 255, 0.14) 0%, transparent 50%),
-    radial-gradient(800px 460px at 100% 0%, rgba(154, 32, 56, 0.22) 0%, transparent 48%),
-    linear-gradient(180deg, #128047 0%, var(--bg) 42%, var(--bg-deep) 100%);
+    radial-gradient(900px 520px at 8% -8%, rgba(255, 255, 255, 0.08) 0%, transparent 52%),
+    radial-gradient(820px 480px at 100% 0%, rgba(154, 32, 56, 0.28) 0%, transparent 50%),
+    linear-gradient(180deg, #0e5333 0%, var(--bg) 40%, var(--bg-deep) 100%);
   background-attachment: fixed;
 }
 
@@ -301,26 +301,60 @@ h2 {
 .struct-block .muted,
 .assunto-row .muted,
 .topico-card .muted,
-.materia-block .linkish,
-.assunto-row .btn,
-.topico-card .btn {
+.materia-block .linkish {
   color: var(--ink-muted);
+}
+
+.materia-block .score-empty,
+.topico-card .score-empty,
+.assunto-row .score-empty,
+.panel .score-empty {
+  color: var(--ink-muted);
+}
+
+.topico-card .btn,
+.assunto-row .btn,
+.struct-block .btn {
+  background: color-mix(in srgb, var(--ok-dim) 35%, #fff);
+  border-color: color-mix(in srgb, var(--bg) 28%, #bbb);
+  color: var(--ink);
 }
 
 .assunto-row .btn.ghost,
 .topico-card .btn.ghost,
-.assunto-row .btn.primary,
-.topico-card .btn.primary {
+.struct-block .btn.ghost {
   color: var(--bg-deep);
   border-color: color-mix(in srgb, var(--bg) 35%, #ccc);
   background: color-mix(in srgb, var(--ok-dim) 50%, #fff);
 }
 
 .assunto-row .btn.primary,
-.topico-card .btn.primary {
+.topico-card .btn.primary,
+.struct-block .btn.primary {
   background: color-mix(in srgb, var(--ok) 16%, #fff);
   border-color: color-mix(in srgb, var(--ok) 40%, #bbb);
   color: #0a5c30;
+}
+
+.assunto-row .btn.danger,
+.topico-card .btn.danger,
+.struct-block .btn.danger,
+.page-head .btn.danger {
+  color: var(--grenat);
+  border-color: color-mix(in srgb, var(--grenat) 55%, #fff);
+  background: color-mix(in srgb, var(--grenat) 10%, #fff);
+}
+
+.page-head .btn.danger {
+  color: #ffe4e9;
+  border-color: color-mix(in srgb, var(--grenat) 50%, #fff);
+  background: color-mix(in srgb, var(--grenat) 38%, transparent);
+}
+
+.page-head .btn.ghost {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.5);
+  background: transparent;
 }
 
 .materia-block {
@@ -508,7 +542,7 @@ h2 {
 
 .chip-meta {
   font-size: 0.7rem;
-  color: var(--muted);
+  color: var(--ink-muted);
   font-family: var(--font-mono);
 }
 
