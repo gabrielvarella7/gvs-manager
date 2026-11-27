@@ -61,10 +61,21 @@ export const api = {
   deleteAssunto: (id: string) =>
     req(`/api/assuntos/${id}`, { method: "DELETE" }),
   addHistorico: (assuntoId: string, acertos: number, quantidade: number) =>
-    req("/api/historico", {
+    req<{ entry: import("./types").HistoricoEntry }>("/api/historico", {
       method: "POST",
       body: JSON.stringify({ assuntoId, acertos, quantidade }),
     }),
+  deleteHistorico: (id: string) =>
+    req<{
+      ok: boolean;
+      entry: {
+        id: string;
+        assuntoId: string;
+        acertos: number;
+        quantidade: number;
+        percentual: number;
+      };
+    }>(`/api/historico/${id}`, { method: "DELETE" }),
   importCremerjStatus: () =>
     req<{
       profile: { id: string; nome: string; concurso: string } | null;
