@@ -15,7 +15,7 @@ const ibmPlexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "GVS Score Manager",
+  title: "GVS ScorePulse",
   description:
     "Acompanhe acertos e U20 por matéria → tópico → assunto nos seus concursos.",
 };

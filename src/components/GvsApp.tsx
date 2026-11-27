@@ -122,7 +122,7 @@ export function GvsApp() {
   if (loading) {
     return (
       <div className="shell">
-        <p className="muted">Carregando GVS…</p>
+        <p className="muted">Carregando ScorePulse…</p>
       </div>
     );
   }
@@ -136,8 +136,10 @@ export function GvsApp() {
     <div className="shell">
       <header className="topbar">
         <div className="brand-block">
-          <div className="brand">GVS</div>
-          <div className="brand-sub">Score Manager</div>
+          <div className="brand">
+            GVS <span className="brand-pulse">ScorePulse</span>
+          </div>
+          <div className="brand-sub">concurso · U20 · revisão</div>
         </div>
         <nav className="tabs" aria-label="Navegação">
           <button
