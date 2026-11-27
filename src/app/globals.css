@@ -668,7 +668,7 @@ h2 {
   gap: 0.45rem 0.75rem;
   font-size: 0.72rem;
   letter-spacing: 0.06em;
-  color: var(--muted);
+  color: var(--ink-muted);
 }
 
 .inline-count {
